@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E05E4791CD0BF3C00317543 /* RLDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E05E4781CD0BF3C00317543 /* RLDefine.swift */; };
 		0E5C36F11CCF36620074C4C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C36F01CCF36620074C4C6 /* AppDelegate.swift */; };
 		0E5C36F61CCF36620074C4C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E5C36F41CCF36620074C4C6 /* Main.storyboard */; };
 		0E5C36F91CCF36620074C4C6 /* V2EX.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C36F71CCF36620074C4C6 /* V2EX.xcdatamodeld */; };
@@ -16,7 +17,6 @@
 		0E5C37141CCF36630074C4C6 /* V2EXUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C37131CCF36630074C4C6 /* V2EXUITests.swift */; };
 		0E5C37251CCF460A0074C4C6 /* RLTopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C37221CCF460A0074C4C6 /* RLTopicCell.swift */; };
 		0E5C37261CCF460A0074C4C6 /* RLTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E5C37241CCF460A0074C4C6 /* RLTopicCell.xib */; };
-		0E5C37281CCF4B7A0074C4C6 /* RLDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C37271CCF4B7A0074C4C6 /* RLDefine.swift */; };
 		0E5C372A1CCF4C770074C4C6 /* RLTopicList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C37291CCF4C770074C4C6 /* RLTopicList.swift */; };
 		0E5C372C1CCF4E730074C4C6 /* RLTopicList+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C372B1CCF4E730074C4C6 /* RLTopicList+TableView.swift */; };
 		0E5C37311CCF73F80074C4C6 /* RLTopicList+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C37301CCF73F80074C4C6 /* RLTopicList+UI.swift */; };
@@ -41,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E05E4771CD0BF0600317543 /* V2EX-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "V2EX-Bridging-Header.h"; sourceTree = "<group>"; };
+		0E05E4781CD0BF3C00317543 /* RLDefine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLDefine.swift; sourceTree = "<group>"; };
 		0E5C36ED1CCF36620074C4C6 /* V2EX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = V2EX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E5C36F01CCF36620074C4C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E5C36F51CCF36620074C4C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -56,7 +58,6 @@
 		0E5C37151CCF36630074C4C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E5C37221CCF460A0074C4C6 /* RLTopicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLTopicCell.swift; sourceTree = "<group>"; };
 		0E5C37241CCF460A0074C4C6 /* RLTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RLTopicCell.xib; sourceTree = "<group>"; };
-		0E5C37271CCF4B7A0074C4C6 /* RLDefine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RLDefine.swift; path = View/Xib/RLDefine.swift; sourceTree = "<group>"; };
 		0E5C37291CCF4C770074C4C6 /* RLTopicList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLTopicList.swift; sourceTree = "<group>"; };
 		0E5C372B1CCF4E730074C4C6 /* RLTopicList+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RLTopicList+TableView.swift"; sourceTree = "<group>"; };
 		0E5C37301CCF73F80074C4C6 /* RLTopicList+UI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RLTopicList+UI.swift"; sourceTree = "<group>"; };
@@ -116,8 +117,8 @@
 		0E5C36EF1CCF36620074C4C6 /* V2EX */ = {
 			isa = PBXGroup;
 			children = (
-				0E5C37291CCF4C770074C4C6 /* RLTopicList.swift */,
-				0E5C37271CCF4B7A0074C4C6 /* RLDefine.swift */,
+				0E05E4781CD0BF3C00317543 /* RLDefine.swift */,
+				0E05E4771CD0BF0600317543 /* V2EX-Bridging-Header.h */,
 				0E5C37211CCF460A0074C4C6 /* View */,
 				0E5C36F01CCF36620074C4C6 /* AppDelegate.swift */,
 				0E5C36F41CCF36620074C4C6 /* Main.storyboard */,
@@ -125,6 +126,7 @@
 				0E5C36FC1CCF36620074C4C6 /* LaunchScreen.storyboard */,
 				0E5C36FF1CCF36620074C4C6 /* Info.plist */,
 				0E5C36F71CCF36620074C4C6 /* V2EX.xcdatamodeld */,
+				0E5C37291CCF4C770074C4C6 /* RLTopicList.swift */,
 				0E5C372B1CCF4E730074C4C6 /* RLTopicList+TableView.swift */,
 				0E5C37301CCF73F80074C4C6 /* RLTopicList+UI.swift */,
 			);
@@ -370,7 +372,7 @@
 				0E5C372C1CCF4E730074C4C6 /* RLTopicList+TableView.swift in Sources */,
 				0E5C36F91CCF36620074C4C6 /* V2EX.xcdatamodeld in Sources */,
 				0E5C37311CCF73F80074C4C6 /* RLTopicList+UI.swift in Sources */,
-				0E5C37281CCF4B7A0074C4C6 /* RLDefine.swift in Sources */,
+				0E05E4791CD0BF3C00317543 /* RLDefine.swift in Sources */,
 				0E5C372A1CCF4C770074C4C6 /* RLTopicList.swift in Sources */,
 				0E5C36F11CCF36620074C4C6 /* AppDelegate.swift in Sources */,
 			);
@@ -468,8 +470,10 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "V2EX/V2EX-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "Pods/**";
 			};
 			name = Debug;
 		};
@@ -507,7 +511,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "V2EX/V2EX-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "Pods/**";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -521,6 +527,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rylynn.V2EX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "V2EX/V2EX-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -533,6 +540,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rylynn.V2EX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "V2EX/V2EX-Bridging-Header.h";
 			};
 			name = Release;
 		};

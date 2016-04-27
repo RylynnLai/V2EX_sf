@@ -6,7 +6,7 @@
 //  Copyright © 2016年 ucs. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 
 let screenW = UIScreen.mainScreen().bounds.width
