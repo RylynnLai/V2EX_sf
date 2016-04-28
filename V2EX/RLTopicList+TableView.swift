@@ -13,17 +13,17 @@ extension RLTopicList {
         return 6
     }
     // MARK: - Table view data source
-//    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return topics.count ?? 0//假如不存在则返回0
-//    }
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return topics.count ?? 0//假如不存在则返回0
+    }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell:RLTopicCell? = tableView.dequeueReusableCellWithIdentifier("topicCell") as? RLTopicCell
         if cell == nil {
-            //            cell = (RLTopicCell.instantiateFromNib() as! RLTopicCell)
+                        cell = (RLTopicCell.instantiateFromNib() as! RLTopicCell)
         }
         if topics.count > 0 {
-            //            cell?.topicModel = (topics[indexPath.row] as! RLTopic)
+//                        cell?.topicModel = (topics[indexPath.row] as! RLTopic)
         }
         return cell!
     }

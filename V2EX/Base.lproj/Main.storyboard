@@ -16,7 +16,7 @@
                     <view key="view" contentMode="scaleToFill" id="b2o-V6-R6g">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="QSZ-lU-iqw"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -24,7 +24,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9cq-kM-zw0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1559" y="-677"/>
+            <point key="canvasLocation" x="-1142" y="-830"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="iws-3s-6ab">
@@ -43,7 +43,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="HnD-bD-SZB" kind="show" id="F96-Be-9jg"/>
+                                    <segue destination="oZh-pd-t5q" kind="showDetail" id="EHj-S1-MZl"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -58,12 +58,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P2C-Cf-T1B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1300" y="-1102"/>
+            <point key="canvasLocation" x="-1559" y="-1016"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Master-->
         <scene sceneID="Umr-K3-Usz">
             <objects>
-                <navigationController id="9s5-CO-trm" sceneMemberID="viewController">
+                <navigationController id="9s5-CO-trm" userLabel="Master" sceneMemberID="viewController">
                     <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="200" height="10"/>
@@ -72,12 +72,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="KNQ-ze-kSz" kind="relationship" relationship="rootViewController" id="WXf-YZ-oLx"/>
+                        <segue destination="Q6t-xj-JiM" kind="relationship" relationship="rootViewController" id="3Hv-E1-zOl"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iIT-Ee-dnB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1300" y="-1440"/>
+            <point key="canvasLocation" x="-1559" y="-1252"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="n9i-aV-EbY">
@@ -86,35 +86,37 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="200" height="10"/>
                     <connections>
-                        <segue destination="9s5-CO-trm" kind="relationship" relationship="masterViewController" id="p1I-GA-7XG"/>
-                        <segue destination="HnD-bD-SZB" kind="relationship" relationship="detailViewController" id="I1N-AI-V9o"/>
+                        <segue destination="oZh-pd-t5q" kind="relationship" relationship="detailViewController" id="l8F-FT-BTl"/>
+                        <segue destination="9s5-CO-trm" kind="relationship" relationship="masterViewController" id="iw4-nq-6Ir"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="30d-CW-uUq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1559" y="-1440"/>
+            <point key="canvasLocation" x="-1559" y="-1400"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="crp-Ua-56x">
+        <!--Detail-->
+        <scene sceneID="SSV-SD-o86">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KNQ-ze-kSz" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oZh-pd-t5q" userLabel="Detail" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="QsW-0V-izO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="w3j-PG-8oH">
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="200" height="10"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GWQ-It-JIR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Q6t-xj-JiM" kind="relationship" relationship="rootViewController" id="bmZ-UG-yxP"/>
+                        <segue destination="HnD-bD-SZB" kind="relationship" relationship="rootViewController" id="HCk-Lp-0Ko"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xvY-Q8-5XF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zzb-Dj-gQL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1300" y="-1333"/>
+            <point key="canvasLocation" x="-1259" y="-1252"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="F96-Be-9jg"/>
+        <segue reference="l8F-FT-BTl"/>
     </inferredMetricsTieBreakers>
 </document>

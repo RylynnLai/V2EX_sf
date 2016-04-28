@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		0E05E4791CD0BF3C00317543 /* RLDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E05E4781CD0BF3C00317543 /* RLDefine.swift */; };
+		0E51697E1CD210810078B45E /* NSString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E51697C1CD210810078B45E /* NSString+Extension.swift */; };
+		0E51697F1CD210810078B45E /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E51697D1CD210810078B45E /* UIView+Extension.swift */; };
+		0E5169811CD21D750078B45E /* RLNetWorkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5169801CD21D750078B45E /* RLNetWorkManager.swift */; };
+		0E5169881CD21D930078B45E /* RLMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5169831CD21D930078B45E /* RLMember.swift */; };
+		0E5169891CD21D930078B45E /* RLNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5169841CD21D930078B45E /* RLNode.swift */; };
+		0E51698A1CD21D930078B45E /* RLTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5169851CD21D930078B45E /* RLTopic.swift */; };
+		0E51698B1CD21D930078B45E /* RLTopicReply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5169861CD21D930078B45E /* RLTopicReply.swift */; };
+		0E51698C1CD21D930078B45E /* RLTopicsTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5169871CD21D930078B45E /* RLTopicsTool.swift */; };
 		0E5C36F11CCF36620074C4C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C36F01CCF36620074C4C6 /* AppDelegate.swift */; };
 		0E5C36F61CCF36620074C4C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E5C36F41CCF36620074C4C6 /* Main.storyboard */; };
 		0E5C36F91CCF36620074C4C6 /* V2EX.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C36F71CCF36620074C4C6 /* V2EX.xcdatamodeld */; };
@@ -19,7 +27,6 @@
 		0E5C37261CCF460A0074C4C6 /* RLTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E5C37241CCF460A0074C4C6 /* RLTopicCell.xib */; };
 		0E5C372A1CCF4C770074C4C6 /* RLTopicList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C37291CCF4C770074C4C6 /* RLTopicList.swift */; };
 		0E5C372C1CCF4E730074C4C6 /* RLTopicList+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C372B1CCF4E730074C4C6 /* RLTopicList+TableView.swift */; };
-		0E5C37311CCF73F80074C4C6 /* RLTopicList+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C37301CCF73F80074C4C6 /* RLTopicList+UI.swift */; };
 		8E8320BD94E2B6FD787D487C /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B065768070992B14A754F20 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +50,14 @@
 /* Begin PBXFileReference section */
 		0E05E4771CD0BF0600317543 /* V2EX-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "V2EX-Bridging-Header.h"; sourceTree = "<group>"; };
 		0E05E4781CD0BF3C00317543 /* RLDefine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLDefine.swift; sourceTree = "<group>"; };
+		0E51697C1CD210810078B45E /* NSString+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+Extension.swift"; sourceTree = "<group>"; };
+		0E51697D1CD210810078B45E /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		0E5169801CD21D750078B45E /* RLNetWorkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLNetWorkManager.swift; sourceTree = "<group>"; };
+		0E5169831CD21D930078B45E /* RLMember.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLMember.swift; sourceTree = "<group>"; };
+		0E5169841CD21D930078B45E /* RLNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLNode.swift; sourceTree = "<group>"; };
+		0E5169851CD21D930078B45E /* RLTopic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLTopic.swift; sourceTree = "<group>"; };
+		0E5169861CD21D930078B45E /* RLTopicReply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLTopicReply.swift; sourceTree = "<group>"; };
+		0E5169871CD21D930078B45E /* RLTopicsTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLTopicsTool.swift; sourceTree = "<group>"; };
 		0E5C36ED1CCF36620074C4C6 /* V2EX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = V2EX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E5C36F01CCF36620074C4C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E5C36F51CCF36620074C4C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -60,7 +75,6 @@
 		0E5C37241CCF460A0074C4C6 /* RLTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RLTopicCell.xib; sourceTree = "<group>"; };
 		0E5C37291CCF4C770074C4C6 /* RLTopicList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLTopicList.swift; sourceTree = "<group>"; };
 		0E5C372B1CCF4E730074C4C6 /* RLTopicList+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RLTopicList+TableView.swift"; sourceTree = "<group>"; };
-		0E5C37301CCF73F80074C4C6 /* RLTopicList+UI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RLTopicList+UI.swift"; sourceTree = "<group>"; };
 		13B806131562B0B0CC420728 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		7B065768070992B14A754F20 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A405F14323F80C9EE606B0AE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -92,6 +106,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E51697B1CD210810078B45E /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				0E51697C1CD210810078B45E /* NSString+Extension.swift */,
+				0E51697D1CD210810078B45E /* UIView+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		0E5169821CD21D930078B45E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0E5169831CD21D930078B45E /* RLMember.swift */,
+				0E5169841CD21D930078B45E /* RLNode.swift */,
+				0E5169851CD21D930078B45E /* RLTopic.swift */,
+				0E5169861CD21D930078B45E /* RLTopicReply.swift */,
+				0E5169871CD21D930078B45E /* RLTopicsTool.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		0E5C36E41CCF36620074C4C6 = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +152,9 @@
 		0E5C36EF1CCF36620074C4C6 /* V2EX */ = {
 			isa = PBXGroup;
 			children = (
+				0E5169821CD21D930078B45E /* Model */,
+				0E5169801CD21D750078B45E /* RLNetWorkManager.swift */,
+				0E51697B1CD210810078B45E /* Extension */,
 				0E05E4781CD0BF3C00317543 /* RLDefine.swift */,
 				0E05E4771CD0BF0600317543 /* V2EX-Bridging-Header.h */,
 				0E5C37211CCF460A0074C4C6 /* View */,
@@ -128,7 +166,6 @@
 				0E5C36F71CCF36620074C4C6 /* V2EX.xcdatamodeld */,
 				0E5C37291CCF4C770074C4C6 /* RLTopicList.swift */,
 				0E5C372B1CCF4E730074C4C6 /* RLTopicList+TableView.swift */,
-				0E5C37301CCF73F80074C4C6 /* RLTopicList+UI.swift */,
 			);
 			path = V2EX;
 			sourceTree = "<group>";
@@ -370,10 +407,17 @@
 			files = (
 				0E5C37251CCF460A0074C4C6 /* RLTopicCell.swift in Sources */,
 				0E5C372C1CCF4E730074C4C6 /* RLTopicList+TableView.swift in Sources */,
+				0E51697F1CD210810078B45E /* UIView+Extension.swift in Sources */,
+				0E51698C1CD21D930078B45E /* RLTopicsTool.swift in Sources */,
+				0E51697E1CD210810078B45E /* NSString+Extension.swift in Sources */,
 				0E5C36F91CCF36620074C4C6 /* V2EX.xcdatamodeld in Sources */,
-				0E5C37311CCF73F80074C4C6 /* RLTopicList+UI.swift in Sources */,
+				0E5169891CD21D930078B45E /* RLNode.swift in Sources */,
+				0E5169881CD21D930078B45E /* RLMember.swift in Sources */,
 				0E05E4791CD0BF3C00317543 /* RLDefine.swift in Sources */,
+				0E5169811CD21D750078B45E /* RLNetWorkManager.swift in Sources */,
+				0E51698A1CD21D930078B45E /* RLTopic.swift in Sources */,
 				0E5C372A1CCF4C770074C4C6 /* RLTopicList.swift in Sources */,
+				0E51698B1CD21D930078B45E /* RLTopicReply.swift in Sources */,
 				0E5C36F11CCF36620074C4C6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
