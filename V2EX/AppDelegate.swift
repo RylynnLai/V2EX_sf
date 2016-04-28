@@ -10,13 +10,17 @@ import UIKit
 import CoreData
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
 
     var window: UIWindow?
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
+        if let splitViewController = window?.rootViewController
+            as? UISplitViewController {
+            splitViewController.delegate = self
+            splitViewController.preferredDisplayMode = .AllVisible
+        }
         return true
     }
 
@@ -44,6 +48,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.saveContext()
     }
 
+    
+    
+    
+    // MARK: - Split view
+    
+    func splitViewController(
+                                            splitViewController: UISplitViewController,
+        collapseSecondaryViewController secondaryViewController: UIViewController,
+                ontoPrimaryViewController primaryViewController: UIViewController
+        ) -> Bool {
+        if let secondaryAsNavController = secondaryViewController
+            as? UINavigationController {
+            if let _ = secondaryAsNavController.topViewController {
+                // Return true to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
+                return true
+            }
+        }
+        return false
+    }
+    
+    
+    
+    
     // MARK: - Core Data stack
 
     lazy var applicationDocumentsDirectory: NSURL = {
