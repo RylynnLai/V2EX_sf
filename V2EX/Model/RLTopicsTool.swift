@@ -21,6 +21,8 @@ class RLTopicsTool: NSObject {
         let path = "/api/topics/show.json?id=\(ID)"
         RLNetWorkManager.defaultNetWorkManager.requestWithPath(path, success: { (response) in
             let topics = RLTopic.mj_objectArrayWithKeyValuesArray(response)
+            _ = self.test(response)
+            
             completion(topic: topics.firstObject as! RLTopic)
             } , failure:{})
     }
@@ -57,5 +59,22 @@ class RLTopicsTool: NSObject {
             let repliesItem = RLTopicReply.mj_objectArrayWithKeyValuesArray(response)
             completion(replies: repliesItem)
             }, failure:{})
+    }
+    
+    func test(keyValuesArray:AnyObject) {
+        //获取管理的数据上下文 对象
+        let app = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = app.managedObjectContext
+
+        //创建TopicEntity对象并赋值
+        let s = TopicEntity.mj_objectArrayWithKeyValuesArray(keyValuesArray, context: context)
+        
+        print(s)
+        //保存
+        do{
+            try context.save()
+        }catch let error as NSError{
+            print("不能保存：\(error.localizedDescription)")
+        }
     }
 }

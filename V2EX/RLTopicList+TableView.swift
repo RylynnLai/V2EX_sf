@@ -9,9 +9,6 @@
 import UIKit
 
 extension RLTopicList {
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 6
-    }
     // MARK: - Table view data source
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return topics.count ?? 0//假如不存在则返回0
@@ -20,10 +17,10 @@ extension RLTopicList {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell:RLTopicCell? = tableView.dequeueReusableCellWithIdentifier("topicCell") as? RLTopicCell
         if cell == nil {
-                        cell = (RLTopicCell.instantiateFromNib() as! RLTopicCell)
+            cell = (RLTopicCell.instantiateFromNib() as! RLTopicCell)
         }
         if topics.count > 0 {
-//                        cell?.topicModel = (topics[indexPath.row] as! RLTopic)
+            cell!.topicModel = (topics[indexPath.row] as! RLTopic)
         }
         return cell!
     }
@@ -38,11 +35,13 @@ extension RLTopicList {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //        let topicDetallVC = RLTopicDetailVC.init(nibName: "RLTopicDetailVC", bundle: nil)
-        if topics.count > 0 {
-            //            topicDetallVC.topicModel = topics[indexPath.row] as? RLTopic
+//        let topicDetallVC = RLTopicDetailVC.init(nibName: "RLTopicDetailVC", bundle: nil)
+//        if topics.count > 0 {
+//            topicDetallVC.topicModel = topics[indexPath.row] as? RLTopic
+//        }
+        RLTopicsTool.shareTopicsTool.topicWithTopicID("43534") { (topic) in
+            
         }
-        
         self.hidesBottomBarWhenPushed = true
         //        self.navigationController?.pushViewController(topicDetallVC, animated: true)
         self.hidesBottomBarWhenPushed = false

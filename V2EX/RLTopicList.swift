@@ -36,8 +36,6 @@ class RLTopicList: UITableViewController {
         return btn
     }()
     
-    /**保存数据模型数组*/
-    lazy var topics:NSMutableArray = {[]}()
     private lazy var header:MJRefreshNormalHeader = {
         let refleshHeader = MJRefreshNormalHeader()
         refleshHeader.setRefreshingTarget(self, refreshingAction: #selector(RLTopicList.refreshData))
@@ -49,6 +47,9 @@ class RLTopicList: UITableViewController {
         refleshFooter.refreshingTitleHidden = true
         return refleshFooter
     }()
+    
+    /**保存数据模型数组*/
+    lazy var topics:NSMutableArray = {[]}()
     var currentPageIdx:NSInteger?//当前加载到的页码,20条话题一页(由服务器决定)
     var pageSelected:RLPageSelected = .RecentTopics//最新or最热
     //MARK: -生命周期
@@ -110,7 +111,7 @@ extension RLTopicList {
 extension RLTopicList {
     @objc private func refreshData() {
         if header.state == .Refreshing {
-            //            RLTopicsTool.shareTopicsTool.currentPageIdx = 1
+            RLTopicsTool.shareTopicsTool.currentPageIdx = 1
             self.topics.removeAllObjects()
             loadData()
         }
@@ -125,25 +126,25 @@ extension RLTopicList {
                 })
         }
         if footer.state == .Refreshing {
-            //            let pageIdx = RLTopicsTool.shareTopicsTool.currentPageIdx
-            //            RLTopicsTool.shareTopicsTool.currentPageIdx = pageIdx + 1
+            let pageIdx = RLTopicsTool.shareTopicsTool.currentPageIdx
+            RLTopicsTool.shareTopicsTool.currentPageIdx = pageIdx + 1
             loadData()
         }
     }
     private func loadData() {
         //只有处于刷新状态才请求网络,防止重复请求
         if header.state == .Refreshing || footer.state == .Refreshing {
-            //            RLTopicsTool.shareTopicsTool.topicsWithCompletion({ [weak self]  (topics) in
-            //                if let strongSelf = self {
-            //                    strongSelf.topics = NSMutableArray.init(array: topics)
-            //                    //在主线程刷新UI
-            //                    dispatch_async(dispatch_get_main_queue(), {
-            //                        strongSelf.tableView.reloadData()
-            //                        strongSelf.header.endRefreshing()
-            //                        strongSelf.footer.endRefreshing()
-            //                    })
-            //                }
-            //                }, option: pageSelected)
+            RLTopicsTool.shareTopicsTool.topicsWithCompletion({ [weak self]  (topics) in
+                if let strongSelf = self {
+                    strongSelf.topics = NSMutableArray.init(array: topics)
+                    //在主线程刷新UI
+                    dispatch_async(dispatch_get_main_queue(), {
+                        strongSelf.tableView.reloadData()
+                        strongSelf.header.endRefreshing()
+                        strongSelf.footer.endRefreshing()
+                    })
+                }
+                }, option: pageSelected)
         }
     }
 }
