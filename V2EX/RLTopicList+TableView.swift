@@ -36,11 +36,11 @@ extension RLTopicList {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 //        let topicDetallVC = RLTopicDetailVC.init(nibName: "RLTopicDetailVC", bundle: nil)
-//        if topics.count > 0 {
+        if topics.count > 0 {
 //            topicDetallVC.topicModel = topics[indexPath.row] as? RLTopic
-//        }
-        RLTopicsTool.shareTopicsTool.topicWithTopicID("43534") { (topic) in
-            
+            RLTopicsTool.shareTopicsTool.topicWithTopicID(((topics[indexPath.row] as! RLTopic).ID?.longValue)!) { (topic) in
+                RLDataManager.sharedManager.TopicByIDString((self.topics[indexPath.row] as! RLTopic).ID!)
+            }
         }
         self.hidesBottomBarWhenPushed = true
         //        self.navigationController?.pushViewController(topicDetallVC, animated: true)

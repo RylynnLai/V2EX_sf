@@ -17,7 +17,7 @@ class RLTopicsTool: NSObject {
     private lazy var topics:NSMutableArray = {[]}()
     
     //根据话题ID获取数据
-    func topicWithTopicID(ID:String, completion:(topic:RLTopic) -> Void) {
+    func topicWithTopicID(ID:Int, completion:(topic:RLTopic) -> Void) {
         let path = "/api/topics/show.json?id=\(ID)"
         RLNetWorkManager.defaultNetWorkManager.requestWithPath(path, success: { (response) in
             let topics = RLTopic.mj_objectArrayWithKeyValuesArray(response)
@@ -35,7 +35,7 @@ class RLTopicsTool: NSObject {
             let path = "/recent?p=\(currentPageIdx)"
             RLNetWorkManager.defaultNetWorkManager.requestHTMLWithPath(path, callBack: { [weak self] (resArr) in
                 if let strongSelf = self {
-                    let tempArr = RLTopic.parserHTMLStrs(resArr)
+                let tempArr       = RLTopic.parserHTMLStrs(resArr)
                     for topic in tempArr {
                         strongSelf.topics.addObject(topic)
                     }
@@ -62,19 +62,9 @@ class RLTopicsTool: NSObject {
     }
     
     func test(keyValuesArray:AnyObject) {
-        //获取管理的数据上下文 对象
-        let app = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context = app.managedObjectContext
-
-        //创建TopicEntity对象并赋值
-        let s = TopicEntity.mj_objectArrayWithKeyValuesArray(keyValuesArray, context: context)
+        if let dic = keyValuesArray.firstObject  {
         
-        print(s)
-        //保存
-        do{
-            try context.save()
-        }catch let error as NSError{
-            print("不能保存：\(error.localizedDescription)")
+            RLDataManager.sharedManager.createTopic(fromDictionary: dic!)
         }
     }
 }

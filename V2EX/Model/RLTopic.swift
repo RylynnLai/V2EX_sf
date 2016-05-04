@@ -9,7 +9,7 @@
 import UIKit
 
 class RLTopic: NSObject {
-    var ID:String?
+    var ID:NSNumber?
     var title:String?
     var url:String?
     var content:String?
@@ -27,7 +27,7 @@ class RLTopic: NSObject {
         return ["ID":"id"]
     }
     //解析HTML,获取标题等简单数据
-    internal class func parserHTMLStrs(resArr:NSArray) -> NSMutableArray {
+    class func parserHTMLStrs(resArr:NSArray) -> NSMutableArray {
         let topics = NSMutableArray.init(capacity: resArr.count)
         
         for str in resArr {
@@ -41,8 +41,8 @@ class RLTopic: NSObject {
             rangeStart = (tempStr as NSString).rangeOfString("class=\"item_title\"><a href=\"/t/")
             tempStr = (tempStr as NSString).substringFromIndex(rangeStart.location + rangeStart.length)
             rangEnd = (tempStr as NSString).rangeOfString("#")
-            topic.ID = (tempStr as NSString).substringToIndex(rangEnd.location)
-            
+            topic.ID = Int((tempStr as NSString).substringToIndex(rangEnd.location))
+    
             rangeStart = (tempStr as NSString).rangeOfString("reply")
             tempStr = (tempStr as NSString).substringFromIndex(rangeStart.location + rangeStart.length)
             rangEnd = (tempStr as NSString).rangeOfString("\">")
