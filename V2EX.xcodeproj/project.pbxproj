@@ -30,7 +30,12 @@
 		0E5C372C1CCF4E730074C4C6 /* RLTopicList+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C372B1CCF4E730074C4C6 /* RLTopicList+TableView.swift */; };
 		0E9CC65F1CD993D5008436C1 /* RLDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9CC65E1CD993D5008436C1 /* RLDataManager.swift */; };
 		0E9CC6631CD99C25008436C1 /* RLDataManager+Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9CC6621CD99C25008436C1 /* RLDataManager+Topic.swift */; };
-		0E9CC6671CD9E99C008436C1 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9CC6651CD9E99C008436C1 /* Topic.swift */; };
+		0E9CC6761CDA0076008436C1 /* Node+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9CC6701CDA0076008436C1 /* Node+CoreDataProperties.swift */; };
+		0E9CC6771CDA0076008436C1 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9CC6711CDA0076008436C1 /* Node.swift */; };
+		0E9CC6781CDA0076008436C1 /* Topic+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9CC6721CDA0076008436C1 /* Topic+CoreDataProperties.swift */; };
+		0E9CC6791CDA0076008436C1 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9CC6731CDA0076008436C1 /* Topic.swift */; };
+		0E9CC67A1CDA0076008436C1 /* Member+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9CC6741CDA0076008436C1 /* Member+CoreDataProperties.swift */; };
+		0E9CC67B1CDA0076008436C1 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9CC6751CDA0076008436C1 /* Member.swift */; };
 		8E8320BD94E2B6FD787D487C /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B065768070992B14A754F20 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -83,7 +88,12 @@
 		0E5C372B1CCF4E730074C4C6 /* RLTopicList+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RLTopicList+TableView.swift"; sourceTree = "<group>"; };
 		0E9CC65E1CD993D5008436C1 /* RLDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLDataManager.swift; sourceTree = "<group>"; };
 		0E9CC6621CD99C25008436C1 /* RLDataManager+Topic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RLDataManager+Topic.swift"; sourceTree = "<group>"; };
-		0E9CC6651CD9E99C008436C1 /* Topic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
+		0E9CC6701CDA0076008436C1 /* Node+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Node+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		0E9CC6711CDA0076008436C1 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		0E9CC6721CDA0076008436C1 /* Topic+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Topic+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		0E9CC6731CDA0076008436C1 /* Topic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
+		0E9CC6741CDA0076008436C1 /* Member+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Member+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		0E9CC6751CDA0076008436C1 /* Member.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 		13B806131562B0B0CC420728 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		7B065768070992B14A754F20 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A405F14323F80C9EE606B0AE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -142,7 +152,12 @@
 				0E57D0BB1CD84B47002C3DE6 /* V2EX.xcdatamodeld */,
 				0E9CC65E1CD993D5008436C1 /* RLDataManager.swift */,
 				0E9CC6621CD99C25008436C1 /* RLDataManager+Topic.swift */,
-				0E9CC6651CD9E99C008436C1 /* Topic.swift */,
+				0E9CC6701CDA0076008436C1 /* Node+CoreDataProperties.swift */,
+				0E9CC6711CDA0076008436C1 /* Node.swift */,
+				0E9CC6721CDA0076008436C1 /* Topic+CoreDataProperties.swift */,
+				0E9CC6731CDA0076008436C1 /* Topic.swift */,
+				0E9CC6741CDA0076008436C1 /* Member+CoreDataProperties.swift */,
+				0E9CC6751CDA0076008436C1 /* Member.swift */,
 			);
 			path = V2EXData;
 			sourceTree = "<group>";
@@ -429,21 +444,26 @@
 				0E5C37251CCF460A0074C4C6 /* RLTopicCell.swift in Sources */,
 				0E5C372C1CCF4E730074C4C6 /* RLTopicList+TableView.swift in Sources */,
 				0E51697F1CD210810078B45E /* UIView+Extension.swift in Sources */,
-				0E9CC6671CD9E99C008436C1 /* Topic.swift in Sources */,
 				0E57D0BD1CD84B47002C3DE6 /* V2EX.xcdatamodeld in Sources */,
 				0E1C61501CD32CAF0049E41C /* RLTopicContent.swift in Sources */,
 				0E51698C1CD21D930078B45E /* RLTopicsTool.swift in Sources */,
 				0E51697E1CD210810078B45E /* NSString+Extension.swift in Sources */,
+				0E9CC6771CDA0076008436C1 /* Node.swift in Sources */,
 				0E5169891CD21D930078B45E /* RLNode.swift in Sources */,
 				0E5169881CD21D930078B45E /* RLMember.swift in Sources */,
 				0E9CC6631CD99C25008436C1 /* RLDataManager+Topic.swift in Sources */,
 				0E9CC65F1CD993D5008436C1 /* RLDataManager.swift in Sources */,
 				0E05E4791CD0BF3C00317543 /* RLDefine.swift in Sources */,
+				0E9CC6791CDA0076008436C1 /* Topic.swift in Sources */,
+				0E9CC67B1CDA0076008436C1 /* Member.swift in Sources */,
 				0E5169811CD21D750078B45E /* RLNetWorkManager.swift in Sources */,
 				0E51698A1CD21D930078B45E /* RLTopic.swift in Sources */,
 				0E5C372A1CCF4C770074C4C6 /* RLTopicList.swift in Sources */,
 				0E51698B1CD21D930078B45E /* RLTopicReply.swift in Sources */,
 				0E5C36F11CCF36620074C4C6 /* AppDelegate.swift in Sources */,
+				0E9CC6761CDA0076008436C1 /* Node+CoreDataProperties.swift in Sources */,
+				0E9CC6781CDA0076008436C1 /* Topic+CoreDataProperties.swift in Sources */,
+				0E9CC67A1CDA0076008436C1 /* Member+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

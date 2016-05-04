@@ -1,5 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Automatic">
+    <entity name="Member" representedClassName="Member" syncable="YES">
+        <attribute name="avatar_large" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="avatar_mini" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="avatar_normal" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tagline" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Node" representedClassName="Node" syncable="YES">
+        <attribute name="avatar_large" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="avatar_mini" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="avatar_normal" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="created" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="footer" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="header" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stars" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tagline" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title_alternative" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="topics" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Topic" representedClassName=".Topic" syncable="YES">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="content_rendered" optional="YES" attributeType="String" syncable="YES"/>
@@ -14,5 +39,7 @@
     </entity>
     <elements>
         <element name="Topic" positionX="-63" positionY="-117" width="128" height="195"/>
+        <element name="Member" positionX="-63" positionY="-45" width="128" height="135"/>
+        <element name="Node" positionX="-54" positionY="-27" width="128" height="270"/>
     </elements>
 </model>

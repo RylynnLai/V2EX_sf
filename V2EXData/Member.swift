@@ -1,5 +1,5 @@
 //
-//  Topic.swift
+//  Member.swift
 //  V2EX
 //
 //  Created by LLZ on 16/5/4.
@@ -9,8 +9,8 @@
 import Foundation
 import CoreData
 
-
-class Topic: NSManagedObject {
+@objc(Member)
+class Member: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
 

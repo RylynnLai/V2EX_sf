@@ -32,8 +32,6 @@ extension RLDataManager {
         return .None
     }
     
-    
-    
     //获取指定ID的帖子
     func TopicByIDString(ID: NSNumber) -> Topic? {
         let predicate = NSPredicate(format: "id == \(ID)")
