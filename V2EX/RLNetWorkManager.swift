@@ -21,7 +21,7 @@ class RLNetWorkManager: NSObject {
     
     static let defaultNetWorkManager = RLNetWorkManager()//单例
     private override init() {}//防止外部用init（）或者（）来初始化这个单例
-    //获取节点话题列表
+    //MARK: -获取节点话题列表
     func requestNodeTopicssWithID(nodeID:String, success:successBlock, failure:errorBlock) -> NSURLSessionDataTask {
         let URLStr = mainURLStr + "/api/topics/show.json?node_id=\(nodeID)"
         let task = sessionManager.GET(URLStr, parameters: nil, success: { (task:NSURLSessionDataTask, responseObject:AnyObject) in
@@ -36,7 +36,7 @@ class RLNetWorkManager: NSObject {
         return task!
     }
     
-    //根据url请求
+    //MARK: -根据url请求
     func requestWithPath(path:String, success:successBlock, failure:errorBlock) -> NSURLSessionDataTask {
         let URLStr = mainURLStr + path
         let task = sessionManager.GET(URLStr, parameters: nil, success: { (task:NSURLSessionDataTask, responseObject:AnyObject) in
@@ -50,7 +50,7 @@ class RLNetWorkManager: NSObject {
         })
        return task!
     }
-    //请求话题数据,block返回(以plist文件缓存话题模型)
+    //MARK: -请求话题数据,block返回(以plist文件缓存话题模型)
     func requestTopicsWithPath(path:String, success:successBlock, failure:errorBlock) -> NSURLSessionDataTask {
         //截取plist文件名(id=xxxxx)
         let range = (path as NSString).rangeOfString("?")
@@ -85,7 +85,7 @@ class RLNetWorkManager: NSObject {
         
         return task!
     }
-    
+    //MARK: -获取html页面内容,并初步解析数据
     func requestHTMLWithPath(path:String, callBack:callBackBlock) -> NSOperation {
         let URLStr = mainURLStr + path
         let url = NSURL.init(string: URLStr)

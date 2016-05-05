@@ -20,7 +20,7 @@ extension RLTopicList {
             cell = (RLTopicCell.instantiateFromNib() as! RLTopicCell)
         }
         if topics.count > 0 {
-            cell!.topicModel = (topics[indexPath.row] as! RLTopic)
+            cell!.topicModel = topics[indexPath.row] 
         }
         return cell!
     }
@@ -38,8 +38,8 @@ extension RLTopicList {
 //        let topicDetallVC = RLTopicDetailVC.init(nibName: "RLTopicDetailVC", bundle: nil)
         if topics.count > 0 {
 //            topicDetallVC.topicModel = topics[indexPath.row] as? RLTopic
-            RLTopicsTool.shareTopicsTool.topicWithTopicID(((topics[indexPath.row] as! RLTopic).ID?.longValue)!) { (topic) in
-                RLDataManager.sharedManager.TopicByIDString((self.topics[indexPath.row] as! RLTopic).ID!)
+            RLTopicsHelper.shareTopicsHelper.topicWithTopicID(((topics[indexPath.row]).id?.longValue)!) { (topic) in
+                RLDataManager.sharedManager.TopicByID((self.topics[indexPath.row]).id!)
             }
         }
         self.hidesBottomBarWhenPushed = true

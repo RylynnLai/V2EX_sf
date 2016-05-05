@@ -10,17 +10,17 @@ import UIKit
 
 class RLTopicCell: UITableViewCell {
 
-    var topicModel:RLTopic? {
+    var topicModel:Topic? {
         didSet{
             titleLable.text = topicModel?.title
             //以下两项没数据就空白
             contentLable.text = topicModel?.content
             createdTime.text = topicModel?.createdTime
             //-------------------------------------------------
-            let iconURL = NSURL.init(string: "http:\(topicModel!.member.avatar_normal!)")
+            let iconURL = NSURL.init(string: "http:\(topicModel!.member!.avatar_normal!)")
             authorBtn.sd_setBackgroundImageWithURL(iconURL, forState: .Normal, placeholderImage: UIImage.init(named: "blank"))
-            nodeLable.text = topicModel?.node.name
-            replieNumLable.text = topicModel?.replies
+            nodeLable.text = topicModel?.node!.name
+            replieNumLable.text = topicModel?.replies?.stringValue
         }
     }
     

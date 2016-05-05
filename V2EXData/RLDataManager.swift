@@ -14,7 +14,6 @@ class RLDataManager {
 
     static let sharedManager = RLDataManager()
     
-    
     // MARK: - Core Data stack
     // 获取程序数据存放文档的路径
     lazy var applicationDocumentsDirectory: NSURL = {
@@ -43,7 +42,7 @@ class RLDataManager {
             dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
             dict[NSLocalizedFailureReasonErrorKey] = failureReason
             
-            dict[NSUnderlyingErrorKey] = error as NSError
+//            dict[NSUnderlyingErrorKey] = error as NSError
             let wrappedError = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
             // Replace this with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
@@ -62,7 +61,7 @@ class RLDataManager {
         return managedObjectContext
     }()
     
-    // MARK: - Core Data Saving support
+    // MARK: - Core Data support
     // 保存上下文
     func saveContext () {
         if managedObjectContext.hasChanges {
@@ -76,5 +75,22 @@ class RLDataManager {
                 abort()
             }
         }
+    }
+    //根据查询条件查询数据库
+    func objectArrayByPredicate(entityName:String, predicate: NSPredicate) -> [AnyObject] {
+        var items = [AnyObject]()
+        
+        //创建一个查询获取请求
+        let fetchRequest:NSFetchRequest = NSFetchRequest(entityName: entityName)
+        
+        //设置查询条件
+        fetchRequest.predicate = predicate
+        
+        //查询操作
+        guard let results = try? managedObjectContext.executeFetchRequest(fetchRequest) as! [Topic] else { return items }
+        
+        results.filter { !$0.deleted }.forEach { items.append($0) }
+        
+        return items
     }
 }

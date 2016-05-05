@@ -13,7 +13,7 @@ class RLTopicReply: NSObject {
     var thanks:String?
     var content:String?
     var content_rendered:String?
-    var member:RLMember?
+//    var member:RLMember?
     var created:String?
     var last_modified:String?
     
