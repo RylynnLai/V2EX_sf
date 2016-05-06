@@ -87,7 +87,16 @@ class RLTopicList: UITableViewController {
         header.beginRefreshing()
     }
 }
-
+//MARK: -segue
+extension RLTopicList {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowTopicContent" {
+            if let topicContent = (segue.destinationViewController as? UINavigationController)?.topViewController as? RLTopicContent {
+                topicContent.topicModel = sender as? Topic
+            }
+        }
+    }
+}
 //MARK: - UI
 extension RLTopicList {
     private func initUI() {

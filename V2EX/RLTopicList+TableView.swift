@@ -35,16 +35,10 @@ extension RLTopicList {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        let topicDetallVC = RLTopicDetailVC.init(nibName: "RLTopicDetailVC", bundle: nil)
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         if topics.count > 0 {
-//            topicDetallVC.topicModel = topics[indexPath.row] as? RLTopic
-            RLTopicsHelper.shareTopicsHelper.topicWithTopicID(((topics[indexPath.row]).id?.longValue)!) { (topic) in
-                RLDataManager.sharedManager.TopicByID((self.topics[indexPath.row]).id!)
-            }
+            self.performSegueWithIdentifier("ShowTopicContent", sender: topics[indexPath.row])
         }
-        self.hidesBottomBarWhenPushed = true
-        //        self.navigationController?.pushViewController(topicDetallVC, animated: true)
-        self.hidesBottomBarWhenPushed = false
     }
     
     //MARK: -UIScrollViewDelegate

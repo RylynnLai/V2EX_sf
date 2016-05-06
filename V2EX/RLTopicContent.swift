@@ -19,46 +19,25 @@ class RLTopicContent: UIViewController {
     @IBOutlet weak var replieNumLable: UILabel!
     @IBOutlet weak var contentWbV: UIWebView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         initUI()
         initData()
-        /*这里规则是
-         *检查数据是否完整,完整就直接显示帖子内容,不重新请求;不完整就发起网络请求,并更新内存缓存保存新的数据
-         *用户可以手动下拉刷新话题列表刷新或下拉刷新帖子刷新,需要更新缓存数据
-         */
-        if topicModel?.content_rendered == nil {
-            loadingAIV.startAnimating()
-            RLTopicsHelper.shareTopicsHelper.topicWithTopicID((topicModel?.id)!, completion: {[weak self] (topic) in
-                if let strongSelf = self {
-                    strongSelf.topicModel = topic
-                    strongSelf.initData()
-                }
-                })
-        }
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        UIView.animateWithDuration(0.1, animations: {
-            [weak self] in
+        
+        UIView.animateWithDuration(0.1, animations: { [weak self] in
             if let strongSelf = self {
                 strongSelf.navigationController?.navigationBar.mj_y = 20;
             }
-            })
+        })
     }
     
     
     //MARK: -私有方法
     private func initUI() {
-        self.view.addSubview(self.contentWbV)
-        loadingAIV.frame = CGRectMake(self.view.mj_w * 0.5, self.view.mj_h * 0.5, 20, 20)
-        loadingAIV.activityIndicatorViewStyle = .Gray
-        loadingAIV.hidesWhenStopped = true
-    }
-    
-    private func initData() {
         //导航栏标题
         self.title = topicModel!.title
         //帖子内容
@@ -82,6 +61,22 @@ class RLTopicContent: UIViewController {
         replieNumLable.text = "\(topicModel!.replies!)个回复"
     }
     
+    private func initData() {
+        /*这里规则是
+         *检查数据是否完整,完整就直接显示帖子内容,不重新请求;不完整就发起网络请求,并更新内存缓存保存新的数据
+         *用户可以手动下拉刷新话题列表刷新或下拉刷新帖子刷新,需要更新缓存数据
+         */
+        if topicModel?.content_rendered == nil {
+            loadingAIV.startAnimating()
+            RLTopicsHelper.shareTopicsHelper.topicWithTopicID((topicModel?.id)!, completion: {[weak self] (topic) in
+                if let strongSelf = self {
+                    strongSelf.topicModel = topic
+                    strongSelf.initUI()
+                }
+            })
+        }
+    }
+    
     private func loadRepliesData() {
         
     }
@@ -101,7 +96,7 @@ class RLTopicContent: UIViewController {
             webView.mj_h = webView.scrollView.contentSize.height + 64
             webView.scrollView.scrollEnabled = false
             let scrollView = self.view as! UIScrollView
-            scrollView.contentSize = CGSizeMake(webView.mj_w, webView.mj_h + 100)
+            scrollView.contentSize = CGSizeMake(screenW, webView.mj_h + 100)
             //MJRefresh(加载评论)
             let footer = MJRefreshAutoNormalFooter.init(refreshingTarget: self, refreshingAction: Selector(loadRepliesData()))
             footer.refreshingTitleHidden = true
