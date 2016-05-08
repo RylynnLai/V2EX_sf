@@ -145,7 +145,7 @@ extension RLTopicList {
         if header.state == .Refreshing || footer.state == .Refreshing {
             RLTopicsHelper.shareTopicsHelper.topicsWithCompletion({ [weak self]  (topics) in
                 if let strongSelf = self {
-                    strongSelf.topics = topics
+                    strongSelf.topics = topics!
                     //在主线程刷新UI
                     dispatch_async(dispatch_get_main_queue(), {
                         strongSelf.tableView.reloadData()

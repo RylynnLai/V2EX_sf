@@ -38,6 +38,7 @@ class RLTopicContent: UIViewController {
     
     //MARK: -私有方法
     private func initUI() {
+        guard (topicModel != nil) else { return }
         //导航栏标题
         self.title = topicModel!.title
         //帖子内容
@@ -45,7 +46,7 @@ class RLTopicContent: UIViewController {
         contentWbV.loadHTMLString(htmlStr, baseURL: nil)
         //头像
         let iconURL = NSURL.init(string: "https:\(topicModel!.member!.avatar_normal!)")
-        authorBtn.sd_setImageWithURL(iconURL, forState: .Normal, placeholderImage: UIImage.init(named: "blank"))
+        authorBtn.sd_setBackgroundImageWithURL(iconURL, forState: .Normal, placeholderImage: UIImage.init(named: "blank"))
         //标题
         titleLable.text = topicModel!.title
         titleLable.adjustsFontSizeToFitWidth = true//固定lable大小,内容自适应,还有个固定字体大小,lable自适应的方法sizeToFit

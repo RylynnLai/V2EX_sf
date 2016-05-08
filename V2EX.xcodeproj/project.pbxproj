@@ -34,6 +34,7 @@
 		0E9CC65F1CD993D5008436C1 /* RLDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9CC65E1CD993D5008436C1 /* RLDataManager.swift */; };
 		0E9CC6631CD99C25008436C1 /* RLDataManager+Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9CC6621CD99C25008436C1 /* RLDataManager+Topic.swift */; };
 		8E8320BD94E2B6FD787D487C /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B065768070992B14A754F20 /* Pods.framework */; };
+		F80EEDD61CDF126500EFC4B8 /* RLTopicsHelper+Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80EEDD51CDF126500EFC4B8 /* RLTopicsHelper+Router.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		13B806131562B0B0CC420728 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		7B065768070992B14A754F20 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A405F14323F80C9EE606B0AE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		F80EEDD51CDF126500EFC4B8 /* RLTopicsHelper+Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RLTopicsHelper+Router.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 			children = (
 				0E5169861CD21D930078B45E /* RLTopicReply.swift */,
 				0E5169871CD21D930078B45E /* RLTopicsHelper.swift */,
+				F80EEDD51CDF126500EFC4B8 /* RLTopicsHelper+Router.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 				0E51698C1CD21D930078B45E /* RLTopicsHelper.swift in Sources */,
 				0E51697E1CD210810078B45E /* NSString+Extension.swift in Sources */,
 				0E0FB6151CDB19C400A73C21 /* Node.swift in Sources */,
+				F80EEDD61CDF126500EFC4B8 /* RLTopicsHelper+Router.swift in Sources */,
 				0E0FB6141CDB19C400A73C21 /* Node+CoreDataProperties.swift in Sources */,
 				0E0FB6121CDB19C400A73C21 /* Member+CoreDataProperties.swift in Sources */,
 				0E0FB6101CDB19C400A73C21 /* Topic+CoreDataProperties.swift in Sources */,
