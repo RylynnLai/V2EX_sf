@@ -26,34 +26,18 @@ extension RLTopicList {
     }
     //MARK: -UITableViewDelegate
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if pageSelected == .RecentTopics{
-            return 105
-        } else if pageSelected == .PopTopics {
+        guard topics.count >= indexPath.row else { return 0 }
+        if (topics[indexPath.row].content != nil) {
             return 130
+        } else {
+            return 105
         }
-        return 0
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         if topics.count > 0 {
             self.performSegueWithIdentifier("ShowTopicContent", sender: topics[indexPath.row])
-        }
-    }
-    
-    //MARK: -UIScrollViewDelegate
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
-        if self.navigationController?.topViewController == self {
-            let navBar = self.navigationController?.navigationBar
-            if scrollView.contentOffset.y > 0 && navBar?.mj_y == 20 {
-                UIView.animateWithDuration(0.5, animations: {
-                    navBar?.mj_y = -(navBar?.mj_h)!
-                })
-            } else if scrollView.contentOffset.y < 0 && navBar?.mj_y < 0 {
-                UIView.animateWithDuration(0.5, animations: {
-                    navBar?.mj_y = 20.0
-                })
-            }
         }
     }
 }

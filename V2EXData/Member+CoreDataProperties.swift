@@ -17,7 +17,7 @@ extension Member {
     @NSManaged var avatar_large: String?
     @NSManaged var avatar_mini: String?
     @NSManaged var avatar_normal: String?
-    @NSManaged var id: String?
+    @NSManaged var id: NSNumber?
     @NSManaged var tagline: String?
     @NSManaged var username: String?
 

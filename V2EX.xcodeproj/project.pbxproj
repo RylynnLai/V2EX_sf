@@ -33,6 +33,9 @@
 		0E5C372C1CCF4E730074C4C6 /* RLTopicList+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C372B1CCF4E730074C4C6 /* RLTopicList+TableView.swift */; };
 		0E9CC65F1CD993D5008436C1 /* RLDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9CC65E1CD993D5008436C1 /* RLDataManager.swift */; };
 		0E9CC6631CD99C25008436C1 /* RLDataManager+Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9CC6621CD99C25008436C1 /* RLDataManager+Topic.swift */; };
+		0EAB4B081CE06CCD00AF202A /* RLBubblesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB4B061CE06CCD00AF202A /* RLBubblesView.swift */; };
+		0EAB4B091CE06CCD00AF202A /* RLNodeBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB4B071CE06CCD00AF202A /* RLNodeBtn.swift */; };
+		0EAB4B0B1CE06D7600AF202A /* RLNodeBubbles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB4B0A1CE06D7600AF202A /* RLNodeBubbles.swift */; };
 		8E8320BD94E2B6FD787D487C /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B065768070992B14A754F20 /* Pods.framework */; };
 		F80EEDD61CDF126500EFC4B8 /* RLTopicsHelper+Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80EEDD51CDF126500EFC4B8 /* RLTopicsHelper+Router.swift */; };
 /* End PBXBuildFile section */
@@ -89,6 +92,9 @@
 		0E5C372B1CCF4E730074C4C6 /* RLTopicList+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RLTopicList+TableView.swift"; sourceTree = "<group>"; };
 		0E9CC65E1CD993D5008436C1 /* RLDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLDataManager.swift; sourceTree = "<group>"; };
 		0E9CC6621CD99C25008436C1 /* RLDataManager+Topic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RLDataManager+Topic.swift"; sourceTree = "<group>"; };
+		0EAB4B061CE06CCD00AF202A /* RLBubblesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLBubblesView.swift; sourceTree = "<group>"; };
+		0EAB4B071CE06CCD00AF202A /* RLNodeBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLNodeBtn.swift; sourceTree = "<group>"; };
+		0EAB4B0A1CE06D7600AF202A /* RLNodeBubbles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLNodeBubbles.swift; sourceTree = "<group>"; };
 		13B806131562B0B0CC420728 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		7B065768070992B14A754F20 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A405F14323F80C9EE606B0AE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -196,6 +202,7 @@
 				0E5C37291CCF4C770074C4C6 /* RLTopicList.swift */,
 				0E5C372B1CCF4E730074C4C6 /* RLTopicList+TableView.swift */,
 				0E1C614F1CD32CAF0049E41C /* RLTopicContent.swift */,
+				0EAB4B0A1CE06D7600AF202A /* RLNodeBubbles.swift */,
 			);
 			path = V2EX;
 			sourceTree = "<group>";
@@ -221,6 +228,8 @@
 		0E5C37211CCF460A0074C4C6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0EAB4B061CE06CCD00AF202A /* RLBubblesView.swift */,
+				0EAB4B071CE06CCD00AF202A /* RLNodeBtn.swift */,
 				0E5C37221CCF460A0074C4C6 /* RLTopicCell.swift */,
 				0E5C37231CCF460A0074C4C6 /* Xib */,
 			);
@@ -436,6 +445,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E5C37251CCF460A0074C4C6 /* RLTopicCell.swift in Sources */,
+				0EAB4B0B1CE06D7600AF202A /* RLNodeBubbles.swift in Sources */,
 				0E5C372C1CCF4E730074C4C6 /* RLTopicList+TableView.swift in Sources */,
 				0E51697F1CD210810078B45E /* UIView+Extension.swift in Sources */,
 				0E0FB6111CDB19C400A73C21 /* Topic.swift in Sources */,
@@ -446,7 +456,9 @@
 				0E0FB6151CDB19C400A73C21 /* Node.swift in Sources */,
 				F80EEDD61CDF126500EFC4B8 /* RLTopicsHelper+Router.swift in Sources */,
 				0E0FB6141CDB19C400A73C21 /* Node+CoreDataProperties.swift in Sources */,
+				0EAB4B091CE06CCD00AF202A /* RLNodeBtn.swift in Sources */,
 				0E0FB6121CDB19C400A73C21 /* Member+CoreDataProperties.swift in Sources */,
+				0EAB4B081CE06CCD00AF202A /* RLBubblesView.swift in Sources */,
 				0E0FB6101CDB19C400A73C21 /* Topic+CoreDataProperties.swift in Sources */,
 				0E9CC6631CD99C25008436C1 /* RLDataManager+Topic.swift in Sources */,
 				0E9CC65F1CD993D5008436C1 /* RLDataManager.swift in Sources */,

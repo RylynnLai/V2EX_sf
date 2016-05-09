@@ -32,7 +32,7 @@ extension RLDataManager {
                     return .None
                 }
                 //插入一个entity
-                guard let t = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedObjectContext) as? Topic else {
+                guard let t = NSManagedObject.init(entity: entity, insertIntoManagedObjectContext: managedObjectContext) as? Topic else {
                     debugPrint("Failed to insert")
                     return .None
                 }
@@ -50,12 +50,7 @@ extension RLDataManager {
         }
         return .None
     }
-    //MARK: -删
-    func deleteTopic(topic: Topic) {
-        managedObjectContext.deleteObject(topic)
-        //删除后要保存下,不然会没有效果
-        saveContext()
-    }
+    
     //MARK: -查
     //获取指定ID的帖子
     func TopicByID(ID: NSNumber) -> Topic? {

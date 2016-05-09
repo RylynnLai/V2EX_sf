@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RLTopicContent: UIViewController {
+class RLTopicContent: UIViewController, UITableViewDelegate {
     var topicModel:Topic?
     
     @IBOutlet weak var loadingAIV: UIActivityIndicatorView!
@@ -109,21 +109,18 @@ class RLTopicContent: UIViewController {
     }
     //MARK: - UIScrollViewDelegate
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        //当前为最顶上控制器才进行下面判断是否隐藏导航条
-        if self.navigationController?.topViewController == self {
-            let navBar = self.navigationController?.navigationBar
-            if scrollView.contentOffset.y > 0 && (navBar?.mj_y == 20) {
+        //splitViewController下面有两个NavigationController(master,detail)
+        if let nav = self.splitViewController?.viewControllers.last as? UINavigationController {
+            let navBar = nav.navigationBar
+            if scrollView.contentOffset.y > 0 && (navBar.mj_y == 20) {
                 UIView.animateWithDuration(0.5, animations: {
-                    (navBar?.mj_y = -(navBar?.mj_h)!)!
+                    navBar.mj_y = -navBar.mj_h
                 })
-            } else if scrollView.contentOffset.y < 0 && (navBar?.mj_y < 0) {
-                UIView.animateWithDuration(0.5, animations: {
-                    navBar?.mj_y = 20.0
+            } else if scrollView.contentOffset.y < 0 && (navBar.mj_y < 0) {
+                UIView.animateWithDuration(0.2, animations: {
+                    navBar.mj_y = 20.0
                 })
             }
-            
         }
     }
-
-
 }

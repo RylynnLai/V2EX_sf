@@ -5,6 +5,27 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
+        <!--Node Bubbles-->
+        <scene sceneID="tLc-Q7-x7m">
+            <objects>
+                <viewController id="dz2-5i-bf9" customClass="RLNodeBubbles" customModule="V2EX" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4hV-mr-uc7"/>
+                        <viewControllerLayoutGuide type="bottom" id="gj7-9r-xcX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VYa-MR-eQm" customClass="RLBubblesView" customModule="V2EX" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="o6l-V2-eFX"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="200"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TBs-Bg-SXB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1204" y="-771"/>
+        </scene>
         <!--TopicContent-->
         <scene sceneID="ib4-Kp-Nvh">
             <objects>
@@ -165,7 +186,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9cq-kM-zw0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1170" y="-827"/>
+            <point key="canvasLocation" x="-749" y="-788"/>
         </scene>
         <!--TopicList-->
         <scene sceneID="iws-3s-6ab">
@@ -184,7 +205,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="oZh-pd-t5q" kind="showDetail" identifier="ShowTopicContent" id="EHj-S1-MZl"/>
+                                    <segue destination="oZh-pd-t5q" kind="show" identifier="ShowTopicContent" action="showDetailViewController:sender:" id="EHj-S1-MZl"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -193,7 +214,13 @@
                             <outlet property="delegate" destination="Q6t-xj-JiM" id="Jrq-Br-TSV"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="VhT-4y-ZHT"/>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="VhT-4y-ZHT">
+                        <barButtonItem key="rightBarButtonItem" title="节点" id="yJc-Fi-mjm">
+                            <connections>
+                                <segue destination="pxw-eq-VKQ" kind="show" id="BIp-i5-MCi"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="200"/>
                 </tableViewController>
@@ -254,7 +281,28 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zzb-Dj-gQL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1259" y="-1252"/>
+            <point key="canvasLocation" x="-1204" y="-1213"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="mYb-eV-3WO">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pxw-eq-VKQ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="200" height="10"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4Db-gu-a2i">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="dz2-5i-bf9" kind="relationship" relationship="rootViewController" id="yvB-T1-Jcs"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gf3-sy-hoH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1204" y="-990"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

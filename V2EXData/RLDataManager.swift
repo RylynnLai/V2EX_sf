@@ -76,6 +76,12 @@ class RLDataManager {
             }
         }
     }
+    //删
+    func deleteObject(object: NSManagedObject) {
+        managedObjectContext.deleteObject(object)
+        //删除后要保存下,不然会没有效果
+        saveContext()
+    }
     //根据查询条件查询数据库
     func objectArrayByPredicate(entityName:String, predicate: NSPredicate) -> [AnyObject] {
         var items = [AnyObject]()

@@ -63,10 +63,7 @@ class RLTopicList: UITableViewController {
         self.tableView.mj_footer = footer
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        self.scrollViewDidScroll(self.tableView)
-    }
+
     //MARK: - action方法
 
     //因为selector是OC中运行时的产物，Swift是静态语言，虽然继承自NSObject的类默认对ObjC运行时是可见的，但如果方法是由private关键字修饰的，则方法默认情况下对ObjC运行时并不是可见的。如果我们的类是纯Swift类，而不是继承自NSObject，则不管方法是private还是internal或public，如果要用在Selector中，都需要加上@objc修饰符。
@@ -86,6 +83,7 @@ class RLTopicList: UITableViewController {
         }
         header.beginRefreshing()
     }
+    
 }
 //MARK: -segue
 extension RLTopicList {
@@ -114,6 +112,7 @@ extension RLTopicList {
         let backBarButtonItem = UIBarButtonItem.init()
         backBarButtonItem.title = ""
         self.navigationItem.backBarButtonItem = backBarButtonItem
+        
     }
 }
 //MARK: -加载数据
@@ -132,7 +131,7 @@ extension RLTopicList {
                 if let strongSelf = self {
                     strongSelf.tableView.mj_footer.endRefreshing()
                 }
-                })
+            })
         }
         if footer.state == .Refreshing {
             let pageIdx = RLTopicsHelper.shareTopicsHelper.currentPageIdx

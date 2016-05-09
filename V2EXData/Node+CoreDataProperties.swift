@@ -20,7 +20,7 @@ extension Node {
     @NSManaged var created: String?
     @NSManaged var footer: String?
     @NSManaged var header: String?
-    @NSManaged var id: String?
+    @NSManaged var id: NSNumber?
     @NSManaged var name: String?
     @NSManaged var stars: String?
     @NSManaged var tagline: String?

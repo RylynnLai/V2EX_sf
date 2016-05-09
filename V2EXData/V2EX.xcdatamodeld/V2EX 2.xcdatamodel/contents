@@ -4,7 +4,7 @@
         <attribute name="avatar_large" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="avatar_mini" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="avatar_normal" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="tagline" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
@@ -15,7 +15,7 @@
         <attribute name="created" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="footer" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="header" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="stars" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="tagline" optional="YES" attributeType="String" syncable="YES"/>
