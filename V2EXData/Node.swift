@@ -12,6 +12,12 @@ import CoreData
 @objc(Node)
 class Node: NSManagedObject {
 
-// Insert code here to add functionality to your managed object subclass
-
+    //MARK: -查
+    //获取指定ID的用户
+    class func NodeByName(name: String) -> Node? {
+        let predicate = NSPredicate(format: "name == %@", argumentArray:[name])
+        let nodes = RLDataManager.sharedManager.objectArrayByPredicate("Node", predicate: predicate) as! [Node]
+        guard let node = nodes.first else {return .None}
+        return node
+    }
 }

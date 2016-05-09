@@ -11,19 +11,10 @@ import CoreData
 
 @objc(Member)
 class Member: NSManagedObject {
-
-    override init(
-        entity: NSEntityDescription,
-        insertIntoManagedObjectContext context: NSManagedObjectContext?
-        ) {
-        super.init(entity: entity, insertIntoManagedObjectContext: context)
-        self = nil
-    }
-    
     //MARK: -查
     //获取指定ID的用户
-    class func MemberByID(ID: NSNumber) -> Member? {
-        let predicate = NSPredicate(format: "id == \(ID)")
+    class func MemberByUsername(username: String) -> Member? {
+        let predicate = NSPredicate(format: "username == %@", argumentArray:[username])
         let members = RLDataManager.sharedManager.objectArrayByPredicate("Member", predicate: predicate) as! [Member]
         guard let member = members.first else {return .None}
         return member

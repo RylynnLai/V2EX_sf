@@ -24,7 +24,7 @@ extension Topic {
     @NSManaged var replies: NSNumber?
     @NSManaged var title: String?
     @NSManaged var url: String?
-    @NSManaged var node: Node?
+    @NSManaged var node: Node? 
     @NSManaged var member: Member?
 
 }
