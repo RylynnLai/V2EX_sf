@@ -14,6 +14,17 @@ class RLDataManager {
 
     static let sharedManager = RLDataManager()
     
+    private lazy var _oldDataDirectory: NSURL = {
+        let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+        let url = urls[urls.count-1]
+        return url
+    }()
+    
+    lazy var dataDirectory: NSURL = {
+        // The directory the application uses to store the Core Data store file. This code uses a directory named "com.LexTang.VPNOn" in the application's documents Application Support directory.
+        return NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.VPNOn")!
+    }()
+    
     // MARK: - Core Data stack
     // 获取程序数据存放文档的路径
     lazy var applicationDocumentsDirectory: NSURL = {
@@ -28,26 +39,34 @@ class RLDataManager {
         return NSManagedObjectModel(contentsOfURL: modelURL)!// 通过momd文件对应的模型初始化托管对象模型
     }()
     //持久性存储区
-    lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
+    lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator? = {
         // The persistent store coordinator for the application. This implementation creates and returns a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
         // Create the coordinator and store
-        let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)// 通过托管对象模型初始化持久化存储区
+        var coordinator:NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)// 通过托管对象模型初始化持久化存储区
+        
+        self.migrateToVersion2(coordinator!)
+        
         let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("SingleViewCoreData.sqlite")// 获取存储的数据库路径
         var failureReason = "There was an error creating or loading the application's saved data."
-        do {
-            try coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil)
-        } catch {
-            // Report any error we got.
-            var dict = [String: AnyObject]()
-            dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
-            dict[NSLocalizedFailureReasonErrorKey] = failureReason
-            
-//            dict[NSUnderlyingErrorKey] = error as NSError
-            let wrappedError = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
-            // Replace this with code to handle the error appropriately.
-            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            NSLog("Unresolved error \(wrappedError), \(wrappedError.userInfo)")
-            abort()
+        
+        let options = [
+            NSMigratePersistentStoresAutomaticallyOption: NSNumber(bool: true),
+            NSInferMappingModelAutomaticallyOption: NSNumber(bool: true),
+            "journal_mode": "WAL"
+        ]
+        
+        guard let store = coordinator!.persistentStoreForURL(url) else{
+        
+            do {
+                try coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: options)
+            } catch let error as NSError {
+                coordinator = nil
+                NSLog("Unresolved error \(error), \(error.userInfo)")
+                exit(1)
+            } catch {
+                fatalError()
+            }
+            return coordinator
         }
         
         return coordinator
@@ -60,6 +79,45 @@ class RLDataManager {
         managedObjectContext.persistentStoreCoordinator = coordinator// 设置托管对象上下文管理的持久存储区
         return managedObjectContext
     }()
+    
+    // MARK: - Migration
+    
+    func migrateToVersion2(coordinator: NSPersistentStoreCoordinator) {
+        let srcURL = self._oldDataDirectory.URLByAppendingPathComponent("SingleViewCoreData.sqlite")
+        let dstURL = self.dataDirectory.URLByAppendingPathComponent("SingleViewCoreData.sqlite")
+        
+        if !NSFileManager.defaultManager().fileExistsAtPath(srcURL.path!) {
+            return
+        }
+        
+        if NSFileManager.defaultManager().fileExistsAtPath(dstURL.path!) {
+            return
+        }
+        
+        let options = NSDictionary(
+            objects: [NSNumber(bool: true), NSNumber(bool: true), "WAL"],
+            forKeys: [NSMigratePersistentStoresAutomaticallyOption, NSInferMappingModelAutomaticallyOption, "journal_mode"])
+        
+        var srcError: NSError?
+        do {
+            try coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: srcURL, options: options as! [NSObject : AnyObject] as [NSObject : AnyObject])
+        } catch let error as NSError {
+            srcError = error
+            debugPrint("Failed to add src store: \(srcError)")
+            return
+        }
+        
+        guard let oldStore = coordinator.persistentStoreForURL(srcURL) else { return }
+        do {
+            try coordinator.migratePersistentStore(oldStore, toURL: dstURL, options: options as? [NSObject : AnyObject], withType: NSSQLiteStoreType)
+            do {
+                try NSFileManager.defaultManager().removeItemAtPath(srcURL.path!)
+            } catch _ {
+            }
+        } catch let error as NSError {
+            debugPrint("Failed to migrate CoreData: \(error)")
+        }
+    }
     
     // MARK: - Core Data support
     // 保存上下文

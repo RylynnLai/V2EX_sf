@@ -62,7 +62,14 @@ class RLTopicList: UITableViewController {
         //默认会执行一次loadMore()
         self.tableView.mj_footer = footer
     }
-    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if let nav = self.splitViewController?.viewControllers.last as? UINavigationController {
+            UIView.animateWithDuration(0.2, animations: {
+                nav.navigationBar.mj_y = 20.0
+            })
+        }
+    }
 
     //MARK: - action方法
 

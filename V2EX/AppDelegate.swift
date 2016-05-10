@@ -49,8 +49,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     }
 
     
-    
-    
     // MARK: - Split view
     // 销毁detail控制器时调用(横屏转为竖屏时)
     func splitViewController(
@@ -67,9 +65,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         return false
     }
     
-    
-    
-
-
 }
 

@@ -1,9 +1,9 @@
 //
 //  Node+CoreDataProperties.swift
-//  V2EX
+//  
 //
-//  Created by LLZ on 16/5/5.
-//  Copyright © 2016年 LLZ. All rights reserved.
+//  Created by LLZ on 16/5/10.
+//
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
 //  to delete and recreate this implementation file for your updated model.
@@ -29,5 +29,6 @@ extension Node {
     @NSManaged var topics: String?
     @NSManaged var url: String?
     @NSManaged var username: String?
+    @NSManaged var topic: NSSet?
 
 }

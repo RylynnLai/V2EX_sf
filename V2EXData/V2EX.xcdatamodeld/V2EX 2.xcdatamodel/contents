@@ -7,6 +7,7 @@
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="tagline" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="topic" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Topic" inverseName="member" inverseEntity="Topic" syncable="YES"/>
     </entity>
     <entity name="Node" representedClassName="Node" syncable="YES">
         <attribute name="avatar_large" optional="YES" attributeType="String" syncable="YES"/>
@@ -24,6 +25,7 @@
         <attribute name="topics" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="topic" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Topic" inverseName="node" inverseEntity="Topic" syncable="YES"/>
     </entity>
     <entity name="Topic" representedClassName="Topic" syncable="YES">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
@@ -36,12 +38,12 @@
         <attribute name="replies" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="member" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Member" syncable="YES"/>
-        <relationship name="node" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Node" syncable="YES"/>
+        <relationship name="member" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Member" inverseName="topic" inverseEntity="Member" syncable="YES"/>
+        <relationship name="node" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Node" inverseName="topic" inverseEntity="Node" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Member" positionX="-63" positionY="-45" width="128" height="133"/>
-        <element name="Node" positionX="-63" positionY="198" width="128" height="268"/>
-        <element name="Topic" positionX="-335" positionY="9" width="128" height="223"/>
+        <element name="Member" positionX="-63" positionY="-45" width="128" height="148"/>
+        <element name="Node" positionX="-63" positionY="198" width="128" height="283"/>
+        <element name="Topic" positionX="-594" positionY="83" width="128" height="223"/>
     </elements>
 </model>
