@@ -13,10 +13,13 @@ import CoreData
 class Member: NSManagedObject {
     //MARK: -查
     //获取指定ID的用户
-    class func MemberByUsername(username: String) -> Member? {
-        let predicate = NSPredicate(format: "username == %@", argumentArray:[username])
-        let members = RLDataManager.sharedManager.objectArrayByPredicate("Member", predicate: predicate) as! [Member]
-        guard let member = members.first else {return .None}
-        return member
+    class func MemberByUsername(username: String?) -> Member? {
+        if let value = username  {
+            let predicate = NSPredicate(format: "username == %@", argumentArray:[value])
+            let members = RLDataManager.sharedManager.objectArrayByPredicate("Member", predicate: predicate) as! [Member]
+            guard let member = members.first else {return .None}
+            return member
+        }
+        return .None
     }
 }

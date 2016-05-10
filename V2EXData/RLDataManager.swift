@@ -76,8 +76,28 @@ class RLDataManager {
             }
         }
     }
+    //MARK: -增
+    //字典 -> 模型 并存进数据库
+    func create(entityName:String, fromKeyValues keyValues: AnyObject) -> NSManagedObject? {
+        //获取entity
+        guard let entity = NSEntityDescription.entityForName(entityName, inManagedObjectContext: managedObjectContext) else {
+            debugPrint("No entity.")
+            return .None
+        }
+        //插入一个entity
+        guard let t = NSManagedObject.init(entity: entity, insertIntoManagedObjectContext: managedObjectContext) as? Topic else {
+            debugPrint("Failed to insert.")
+            return .None
+        }
+        //在新创建的模型上更新模型
+        let item = t.mj_setKeyValues(keyValues, context: managedObjectContext)
+        //保存
+        saveContext()
+        return item
+    }
+    
     //删
-    func deleteObject(object: NSManagedObject) {
+    func delete(object: NSManagedObject) {
         managedObjectContext.deleteObject(object)
         //删除后要保存下,不然会没有效果
         saveContext()
@@ -93,7 +113,7 @@ class RLDataManager {
         fetchRequest.predicate = predicate
         
         //查询操作
-        guard let results = try? managedObjectContext.executeFetchRequest(fetchRequest) as! [Topic] else { return items }
+        guard let results = try? managedObjectContext.executeFetchRequest(fetchRequest) else { return items }
         
         results.filter { !$0.deleted }.forEach { items.append($0) }
         

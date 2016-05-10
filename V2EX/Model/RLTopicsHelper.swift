@@ -27,7 +27,7 @@ class RLTopicsHelper: NSObject {
                 return
             }
             if let responseJSON = response.result.value as? [AnyObject]{
-                let topic = RLDataManager.sharedManager.createTopic(fromKeyValues: responseJSON.first!)
+                let topic = Topic.createTopic(fromKeyValues: responseJSON.first!)
                 completion(topic: topic)
             }
         }
@@ -50,7 +50,7 @@ class RLTopicsHelper: NSObject {
                    let strongSelf = self {
                     // Conditional cast from 'String' to 'NSString' always succeeds
                     let KeyValuesArray = strongSelf.parserHTMLString(HTMLStr as NSString)
-                    let newTopics = RLDataManager.sharedManager.createTopicsArray(fromKeyValuesArray: KeyValuesArray)
+                    let newTopics = Topic.createTopicsArray(fromKeyValuesArray: KeyValuesArray)
                     strongSelf.topics += newTopics
                     completion(topics: strongSelf.topics)
                 }
@@ -64,7 +64,7 @@ class RLTopicsHelper: NSObject {
                 }
                 
                 if let responseJSON = response.result.value as? [AnyObject] {
-                    let topics = RLDataManager.sharedManager.createTopicsArray(fromKeyValuesArray: responseJSON)
+                    let topics = Topic.createTopicsArray(fromKeyValuesArray: responseJSON)
                     completion(topics: topics)
                 }
             })

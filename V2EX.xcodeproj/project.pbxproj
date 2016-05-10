@@ -32,7 +32,6 @@
 		0E5C372A1CCF4C770074C4C6 /* RLTopicList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C37291CCF4C770074C4C6 /* RLTopicList.swift */; };
 		0E5C372C1CCF4E730074C4C6 /* RLTopicList+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C372B1CCF4E730074C4C6 /* RLTopicList+TableView.swift */; };
 		0E9CC65F1CD993D5008436C1 /* RLDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9CC65E1CD993D5008436C1 /* RLDataManager.swift */; };
-		0E9CC6631CD99C25008436C1 /* RLDataManager+Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9CC6621CD99C25008436C1 /* RLDataManager+Topic.swift */; };
 		0EAB4B081CE06CCD00AF202A /* RLBubblesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB4B061CE06CCD00AF202A /* RLBubblesView.swift */; };
 		0EAB4B091CE06CCD00AF202A /* RLNodeBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB4B071CE06CCD00AF202A /* RLNodeBtn.swift */; };
 		0EAB4B0B1CE06D7600AF202A /* RLNodeBubbles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB4B0A1CE06D7600AF202A /* RLNodeBubbles.swift */; };
@@ -91,7 +90,6 @@
 		0E5C37291CCF4C770074C4C6 /* RLTopicList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLTopicList.swift; sourceTree = "<group>"; };
 		0E5C372B1CCF4E730074C4C6 /* RLTopicList+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RLTopicList+TableView.swift"; sourceTree = "<group>"; };
 		0E9CC65E1CD993D5008436C1 /* RLDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLDataManager.swift; sourceTree = "<group>"; };
-		0E9CC6621CD99C25008436C1 /* RLDataManager+Topic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RLDataManager+Topic.swift"; sourceTree = "<group>"; };
 		0EAB4B061CE06CCD00AF202A /* RLBubblesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLBubblesView.swift; sourceTree = "<group>"; };
 		0EAB4B071CE06CCD00AF202A /* RLNodeBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLNodeBtn.swift; sourceTree = "<group>"; };
 		0EAB4B0A1CE06D7600AF202A /* RLNodeBubbles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLNodeBubbles.swift; sourceTree = "<group>"; };
@@ -151,7 +149,6 @@
 			children = (
 				0E57D0BB1CD84B47002C3DE6 /* V2EX.xcdatamodeld */,
 				0E9CC65E1CD993D5008436C1 /* RLDataManager.swift */,
-				0E9CC6621CD99C25008436C1 /* RLDataManager+Topic.swift */,
 				0E0FB60A1CDB19C400A73C21 /* Topic+CoreDataProperties.swift */,
 				0E0FB60B1CDB19C400A73C21 /* Topic.swift */,
 				0E0FB60C1CDB19C400A73C21 /* Member+CoreDataProperties.swift */,
@@ -460,7 +457,6 @@
 				0E0FB6121CDB19C400A73C21 /* Member+CoreDataProperties.swift in Sources */,
 				0EAB4B081CE06CCD00AF202A /* RLBubblesView.swift in Sources */,
 				0E0FB6101CDB19C400A73C21 /* Topic+CoreDataProperties.swift in Sources */,
-				0E9CC6631CD99C25008436C1 /* RLDataManager+Topic.swift in Sources */,
 				0E9CC65F1CD993D5008436C1 /* RLDataManager.swift in Sources */,
 				0E05E4791CD0BF3C00317543 /* RLDefine.swift in Sources */,
 				0E5169811CD21D750078B45E /* RLNetWorkManager.swift in Sources */,
