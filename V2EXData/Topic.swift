@@ -43,7 +43,7 @@ class Topic: NSManagedObject {
     //获取指定ID的帖子
     class func TopicByID(ID: NSNumber?) -> Topic? {
         if let value = ID  {
-            let predicate = NSPredicate(format: "id == \(value)")
+            let predicate = NSPredicate(format: "id == %@", argumentArray:[value])
             let topics = RLDataManager.sharedManager.objectArrayByPredicate("Topic", predicate:predicate) as! [Topic]
             guard let topic = topics.first else {return .None}
             return topic

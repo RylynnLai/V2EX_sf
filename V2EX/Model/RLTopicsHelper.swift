@@ -76,10 +76,7 @@ class RLTopicsHelper: NSObject {
         Alamofire.request(.GET, mainURLStr + path).responseJSON { (response) in
             
         }
-        RLNetWorkManager.defaultNetWorkManager.requestWithPath(path, success: { (response) in
-            let repliesItem = RLTopicReply.mj_objectArrayWithKeyValuesArray(response)
-            completion(replies: repliesItem)
-            }, failure:{})
+        
     }
 
     //MARK: -other

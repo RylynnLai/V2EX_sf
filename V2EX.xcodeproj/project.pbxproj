@@ -17,7 +17,6 @@
 		0E1C61501CD32CAF0049E41C /* RLTopicContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1C614F1CD32CAF0049E41C /* RLTopicContent.swift */; };
 		0E51697E1CD210810078B45E /* NSString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E51697C1CD210810078B45E /* NSString+Extension.swift */; };
 		0E51697F1CD210810078B45E /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E51697D1CD210810078B45E /* UIView+Extension.swift */; };
-		0E5169811CD21D750078B45E /* RLNetWorkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5169801CD21D750078B45E /* RLNetWorkManager.swift */; };
 		0E51698B1CD21D930078B45E /* RLTopicReply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5169861CD21D930078B45E /* RLTopicReply.swift */; };
 		0E51698C1CD21D930078B45E /* RLTopicsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5169871CD21D930078B45E /* RLTopicsHelper.swift */; };
 		0E57D0BD1CD84B47002C3DE6 /* V2EX.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0E57D0BB1CD84B47002C3DE6 /* V2EX.xcdatamodeld */; };
@@ -68,7 +67,6 @@
 		0E1C614F1CD32CAF0049E41C /* RLTopicContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLTopicContent.swift; sourceTree = "<group>"; };
 		0E51697C1CD210810078B45E /* NSString+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+Extension.swift"; sourceTree = "<group>"; };
 		0E51697D1CD210810078B45E /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
-		0E5169801CD21D750078B45E /* RLNetWorkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLNetWorkManager.swift; sourceTree = "<group>"; };
 		0E5169861CD21D930078B45E /* RLTopicReply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLTopicReply.swift; sourceTree = "<group>"; };
 		0E5169871CD21D930078B45E /* RLTopicsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLTopicsHelper.swift; sourceTree = "<group>"; };
 		0E57D0BC1CD84B47002C3DE6 /* V2EX.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = V2EX.xcdatamodel; sourceTree = "<group>"; };
@@ -186,7 +184,6 @@
 			isa = PBXGroup;
 			children = (
 				0E5169821CD21D930078B45E /* Model */,
-				0E5169801CD21D750078B45E /* RLNetWorkManager.swift */,
 				0E51697B1CD210810078B45E /* Extension */,
 				0E05E4781CD0BF3C00317543 /* RLDefine.swift */,
 				0E05E4771CD0BF0600317543 /* V2EX-Bridging-Header.h */,
@@ -460,7 +457,6 @@
 				0E0FB6101CDB19C400A73C21 /* Topic+CoreDataProperties.swift in Sources */,
 				0E9CC65F1CD993D5008436C1 /* RLDataManager.swift in Sources */,
 				0E05E4791CD0BF3C00317543 /* RLDefine.swift in Sources */,
-				0E5169811CD21D750078B45E /* RLNetWorkManager.swift in Sources */,
 				0E5C372A1CCF4C770074C4C6 /* RLTopicList.swift in Sources */,
 				0E51698B1CD21D930078B45E /* RLTopicReply.swift in Sources */,
 				0E0FB6131CDB19C400A73C21 /* Member.swift in Sources */,

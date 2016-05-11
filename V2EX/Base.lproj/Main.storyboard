@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="FRj-iB-uYL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="FRj-iB-uYL">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -215,7 +215,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="VhT-4y-ZHT">
-                        <barButtonItem key="rightBarButtonItem" title="节点" id="yJc-Fi-mjm">
+                        <barButtonItem key="rightBarButtonItem" image="icon_rayps_64@2x" style="plain" id="yJc-Fi-mjm">
                             <connections>
                                 <segue destination="pxw-eq-VKQ" kind="show" id="BIp-i5-MCi"/>
                             </connections>
@@ -305,6 +305,9 @@
             <point key="canvasLocation" x="-1204" y="-990"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_rayps_64@2x" width="32" height="32"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="EHj-S1-MZl"/>
     </inferredMetricsTieBreakers>

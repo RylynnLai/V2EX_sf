@@ -30,12 +30,19 @@ class RLNodeBubbles: UIViewController {
 //                strongSelf.bubblesView.nodeModels = nodeModels
 //            }
 //            }, failure:{})
-//        
-//        
-//        
-//        Alamofire.request(.GET, mainURLStr + "/api/nodes/all.json").responseJSON { (response) in
-//            
-//        }
+        
+        
+        
+        Alamofire.request(.GET, mainURLStr + "/api/nodes/all.json").responseJSON { (response) in
+            guard response.result.isSuccess else {
+                print("Error 获取节点数据失败: \(response.result.error)")
+                return
+            }
+            if let responseJSON = response.result.value as? [NSDictionary]{
+                let nodes = Node.createNodesArray(fromKeyValuesArray: responseJSON)
+                (self.view as! RLBubblesView).nodeModels = NSSet.init(array: nodes)
+            }
+        }
     }
 
 

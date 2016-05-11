@@ -119,7 +119,6 @@ extension RLTopicList {
         let backBarButtonItem = UIBarButtonItem.init()
         backBarButtonItem.title = ""
         self.navigationItem.backBarButtonItem = backBarButtonItem
-        
     }
 }
 //MARK: -加载数据
