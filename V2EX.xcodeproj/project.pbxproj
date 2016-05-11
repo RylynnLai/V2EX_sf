@@ -36,6 +36,7 @@
 		0EAB4B0B1CE06D7600AF202A /* RLNodeBubbles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB4B0A1CE06D7600AF202A /* RLNodeBubbles.swift */; };
 		8E8320BD94E2B6FD787D487C /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B065768070992B14A754F20 /* Pods.framework */; };
 		F80EEDD61CDF126500EFC4B8 /* RLTopicsHelper+Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80EEDD51CDF126500EFC4B8 /* RLTopicsHelper+Router.swift */; };
+		F8F2485E1CE37C420040E2AC /* RLDataManager+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F2485D1CE37C420040E2AC /* RLDataManager+Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		7B065768070992B14A754F20 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A405F14323F80C9EE606B0AE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F80EEDD51CDF126500EFC4B8 /* RLTopicsHelper+Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RLTopicsHelper+Router.swift"; sourceTree = "<group>"; };
+		F8F2485D1CE37C420040E2AC /* RLDataManager+Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RLDataManager+Model.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 			children = (
 				0E57D0BB1CD84B47002C3DE6 /* V2EX.xcdatamodeld */,
 				0E9CC65E1CD993D5008436C1 /* RLDataManager.swift */,
+				F8F2485D1CE37C420040E2AC /* RLDataManager+Model.swift */,
 				0E0FB60A1CDB19C400A73C21 /* Topic+CoreDataProperties.swift */,
 				0E0FB60B1CDB19C400A73C21 /* Topic.swift */,
 				0E0FB60C1CDB19C400A73C21 /* Member+CoreDataProperties.swift */,
@@ -444,6 +447,7 @@
 				0E5C372C1CCF4E730074C4C6 /* RLTopicList+TableView.swift in Sources */,
 				0E51697F1CD210810078B45E /* UIView+Extension.swift in Sources */,
 				0E0FB6111CDB19C400A73C21 /* Topic.swift in Sources */,
+				F8F2485E1CE37C420040E2AC /* RLDataManager+Model.swift in Sources */,
 				0E57D0BD1CD84B47002C3DE6 /* V2EX.xcdatamodeld in Sources */,
 				0E1C61501CD32CAF0049E41C /* RLTopicContent.swift in Sources */,
 				0E51698C1CD21D930078B45E /* RLTopicsHelper.swift in Sources */,
