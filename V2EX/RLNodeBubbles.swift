@@ -23,7 +23,6 @@ class RLNodeBubbles: UIViewController, BubblesViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
-        initUI()
         
         if let bubblesView = self.view as? RLBubblesView {
             bubblesView.Bdelegate = self
@@ -34,10 +33,12 @@ class RLNodeBubbles: UIViewController, BubblesViewDelegate {
             }
         }
     }
-
-    private func initUI() {
+    
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.navigationBar.hidden = true
         self.view.addSubview(dismissBtn)
     }
+
     private func loadData()  {
         Alamofire.request(.GET, mainURLStr + "/api/nodes/all.json").responseJSON { (response) in
             guard response.result.isSuccess else {
