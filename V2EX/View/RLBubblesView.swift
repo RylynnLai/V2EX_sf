@@ -10,8 +10,15 @@ import UIKit
 import QuartzCore
 
 
+protocol BubblesViewDelegate : NSObjectProtocol {
+    func willStartSlipAnimation()
+    func didStopSlipAnimation()
+}
+
+
 class RLBubblesView: UIScrollView, UIScrollViewDelegate {
 
+    weak var Bdelegate: BubblesViewDelegate?
     // MARk: -setter方法
     var nodeModels:NSSet? {
         didSet{//带属性监视器,表示nodeModels被设置时调用(即使是设置相同的值也会调用)
@@ -168,5 +175,20 @@ class RLBubblesView: UIScrollView, UIScrollViewDelegate {
                 }
             }
         }
+    }
+    
+    
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        Bdelegate?.didStopSlipAnimation()
+    }
+    
+    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !decelerate {
+            Bdelegate?.didStopSlipAnimation()
+        }
+    }
+    
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        Bdelegate?.willStartSlipAnimation()
     }
 }

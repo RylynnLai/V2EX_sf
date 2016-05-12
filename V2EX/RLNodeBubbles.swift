@@ -9,30 +9,36 @@
 import UIKit
 import Alamofire
 
-class RLNodeBubbles: UIViewController {
+class RLNodeBubbles: UIViewController, BubblesViewDelegate {
 
+    lazy var dismissBtn:UIButton = {
+        let btn = UIButton.init(frame: CGRectMake(20, 20, 40, 40))
+        btn.backgroundColor = V2EXGray
+        btn.setTitle("返回", forState: .Normal)
+        btn.layer.cornerRadius = 10
+        btn.layer.masksToBounds = true
+        btn.addTarget(self, action: #selector(RLNodeBubbles.dismiss), forControlEvents: .TouchUpInside)
+        return btn
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
-        // Do any additional setup after loading the view.
+        initUI()
+        
+        if let bubblesView = self.view as? RLBubblesView {
+            bubblesView.Bdelegate = self
+            bubblesView.nodeBtnAction = {[weak self] (nodeModel)->Void in
+                if let strongSelf = self {
+                    strongSelf.performSegueWithIdentifier("NodeBubbles2NodeTopicList", sender: nodeModel)//执行segue线
+                }
+            }
+        }
     }
 
+    private func initUI() {
+        self.view.addSubview(dismissBtn)
+    }
     private func loadData()  {
-//        RLNetWorkManager.defaultNetWorkManager.requestWithPath("/api/nodes/all.json", success: {[weak self] (response) in
-//            let allNodes = RLNode.mj_objectArrayWithKeyValuesArray(response)
-//            let nodeModels:NSMutableSet = NSMutableSet.init(array: allNodes as [AnyObject])
-//            for node in nodeModels{
-//                if Int((node as! Node).topics!)! < 100 {//话题数目少于100条的不显示
-//                    nodeModels.removeObject(node)
-//                }
-//            }
-//            if let strongSelf = self {
-//                strongSelf.bubblesView.nodeModels = nodeModels
-//            }
-//            }, failure:{})
-        
-        
-        
         Alamofire.request(.GET, mainURLStr + "/api/nodes/all.json").responseJSON { (response) in
             guard response.result.isSuccess else {
                 print("Error 获取节点数据失败: \(response.result.error)")
@@ -44,6 +50,31 @@ class RLNodeBubbles: UIViewController {
             }
         }
     }
-
-
+    @objc private func dismiss() {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+}
+//MARK: -segue
+extension RLNodeBubbles {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "NodeBubbles2NodeTopicList" {
+            if let vc = segue.destinationViewController as? RLNodeTopicsList {
+                vc.nodeModel = (sender as! Node)
+            }
+        }
+    }
+}
+//MARK: -BubblesViewDelegate
+extension RLNodeBubbles {
+    func didStopSlipAnimation() {
+        UIView.animateWithDuration(0.2) {
+            self.dismissBtn.alpha = 1
+        }
+    }
+    
+    func willStartSlipAnimation() {
+        UIView.animateWithDuration(0.5) { 
+            self.dismissBtn.alpha = 0
+        }
+    }
 }

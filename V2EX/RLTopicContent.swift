@@ -67,9 +67,10 @@ class RLTopicContent: UIViewController, UITableViewDelegate {
          *检查数据是否完整,完整就直接显示帖子内容,不重新请求;不完整就发起网络请求,并更新内存缓存保存新的数据
          *用户可以手动下拉刷新话题列表刷新或下拉刷新帖子刷新,需要更新缓存数据
          */
-        if topicModel?.content_rendered == nil {
+        guard topicModel != nil else { return }
+        if topicModel!.content_rendered == nil {
             loadingAIV.startAnimating()
-            RLTopicsHelper.shareTopicsHelper.topicWithTopicID((topicModel?.id)!, completion: {[weak self] (topic) in
+            RLTopicsHelper.shareTopicsHelper.topicWithTopicID(topicModel!.id!, completion: {[weak self] (topic) in
                 if let strongSelf = self {
                     strongSelf.topicModel = topic
                     strongSelf.initUI()

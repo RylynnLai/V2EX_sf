@@ -95,7 +95,7 @@ class RLTopicList: UITableViewController {
 //MARK: -segue
 extension RLTopicList {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "ShowTopicContent" {
+        if segue.identifier == "TopicList2TopicContent" {
             if let topicContent = (segue.destinationViewController as? UINavigationController)?.topViewController as? RLTopicContent {
                 topicContent.topicModel = sender as? Topic
             }

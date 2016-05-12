@@ -37,7 +37,7 @@ extension RLTopicList {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         if topics.count > 0 {
-            self.performSegueWithIdentifier("ShowTopicContent", sender: topics[indexPath.row])
+            self.performSegueWithIdentifier("TopicList2TopicContent", sender: topics[indexPath.row])
         }
     }
 }
