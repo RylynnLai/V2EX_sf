@@ -9,8 +9,6 @@
 import Foundation
 import CoreData
 
-private let dataManager:RLDataManager = { return RLDataManager.sharedManager }()
-
 @objc(Topic)
 class Topic: NSManagedObject {
     //MARK: -增
@@ -26,19 +24,14 @@ class Topic: NSManagedObject {
         }
         return topics
     }
+   
     class func createTopic(fromKeyValues keyValues: AnyObject) -> Topic? {
-        if let id = keyValues["id"] as? NSNumber{
-            guard let t = TopicByID(id) else {//检查数据库中有没有数据
-                return dataManager.create("Topic", fromKeyValues: keyValues) as? Topic
-            }
-            //拿到数据库中的模型,并更新模型
-            let topic = t.mj_setKeyValues(keyValues, context: RLDataManager.sharedManager.managedObjectContext)
-            //保存
-            dataManager.saveContext()
+        if let topic = RLDataManager.sharedManager.create("Topic", fromKeyValues: keyValues, withIdentifier: "id") as? Topic {
             return topic
         }
         return .None
     }
+    
     //MARK: -查
     //获取指定ID的帖子
     class func TopicByID(ID: NSNumber?) -> Topic? {

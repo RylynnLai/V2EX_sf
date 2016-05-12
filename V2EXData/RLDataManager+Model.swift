@@ -11,42 +11,27 @@ extension RLDataManager {
     //MARK: -增
     //字典 -> 模型 并存进数据库
     func create(entityName:String, fromKeyValues keyValues: AnyObject, withIdentifier identifier:String) -> NSManagedObject? {
-        if let id = keyValues[identifier] as AnyObject {
-            let predicate = NSPredicate(format: "\(entityName) == %@", argumentArray:[id])
-            let topics = RLDataManager.sharedManager.objectArrayByPredicate("Topic", predicate:predicate) as! [Topic]
-
-            
-            
-            
-            guard let t = TopicByID(id) else {//检查数据库中有没有数据
-                return dataManager.create("Topic", fromKeyValues: keyValues) as? Topic
+        if let id = keyValues[identifier] {
+            //检查数据库有没有存在的
+            let predicate = NSPredicate(format: "\(identifier) == %@", argumentArray:[id!])
+            let objectArray = objectArrayByPredicate(entityName, predicate:predicate)
+            guard let object = objectArray.first as? NSManagedObject else {
+                //数据库没有则创建并插入
+                let object = NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: managedObjectContext)
+                //在新创建的模型上更新模型
+                let managedObject = object.mj_setKeyValues(keyValues, context: managedObjectContext)
+                //保存
+                saveContext()
+                return managedObject
             }
+            
             //拿到数据库中的模型,并更新模型
-            let topic = t.mj_setKeyValues(keyValues, context: RLDataManager.sharedManager.managedObjectContext)
+            let managedObject = object.mj_setKeyValues(keyValues, context: managedObjectContext)
             //保存
-            dataManager.saveContext()
-            return topic
+            saveContext()
+            return managedObject
         }
-        
-        
-        if let value = ID  {
-            let predicate = NSPredicate(format: "id == %@", argumentArray:[value])
-            let topics = RLDataManager.sharedManager.objectArrayByPredicate("Topic", predicate:predicate) as! [Topic]
-            guard let topic = topics.first else {return .None}
-            return topic
-        }
-        
-        
-        
-        
-        //创建并插入
-        let t = NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: managedObjectContext)
-        
-        //在新创建的模型上更新模型
-        let item = t.mj_setKeyValues(keyValues, context: managedObjectContext)
-        //保存
-        saveContext()
-        return item
+        return .None
     }
     
     //删
