@@ -13,6 +13,7 @@ class RLNodeBubbles: UIViewController, BubblesViewDelegate {
 
     lazy var dismissBtn:UIButton = {
         let btn = UIButton.init(frame: CGRectMake(20, 20, 40, 40))
+        btn.alpha = 0.5
         btn.backgroundColor = V2EXGray
         btn.setTitle("返回", forState: .Normal)
         btn.layer.cornerRadius = 10
@@ -20,37 +21,64 @@ class RLNodeBubbles: UIViewController, BubblesViewDelegate {
         btn.addTarget(self, action: #selector(RLNodeBubbles.dismiss), forControlEvents: .TouchUpInside)
         return btn
     }()
+    
+    private lazy var bubblesView:RLBubblesView = {
+        var bView = RLBubblesView.init(frame: UIScreen.mainScreen().bounds)
+        bView.Bdelegate = self
+        bView.nodeBtnAction = {[weak self] (nodeModel) -> Void in
+            if let strongSelf = self {
+                strongSelf.performSegueWithIdentifier("NodeBubbles2NodeTopicList", sender: nodeModel)//执行segue线
+            }
+        }
+        return bView
+    }()
+    
+    private lazy var AIV: UIActivityIndicatorView = {
+        let aviView = UIActivityIndicatorView.init(frame: CGRectMake(0, 0, 30, 30))
+        aviView.center = self.view.center
+        return aviView
+    }()
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
         
-        if let bubblesView = self.view as? RLBubblesView {
-            bubblesView.Bdelegate = self
-            bubblesView.nodeBtnAction = {[weak self] (nodeModel)->Void in
-                if let strongSelf = self {
-                    strongSelf.performSegueWithIdentifier("NodeBubbles2NodeTopicList", sender: nodeModel)//执行segue线
+        self.view.addSubview(bubblesView)
+        self.view.addSubview(dismissBtn)
+        self.view.addSubview(AIV)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBar.hidden = true
+    }
+
+    private func loadData()  {
+        AIV.startAnimating()
+        if Node.allNodes().count > 0 {
+            self.bubblesView.nodeModels = NSSet.init(array: Node.allNodes())
+            AIV.stopAnimating()
+        }
+        
+        Alamofire.request(.GET, mainURLStr + "/api/nodes/all.json").responseJSON { [weak self] (response) in
+            guard response.result.isSuccess else {
+                print("Error 获取节点数据失败: \(response.result.error)")
+                return
+            }
+            if let responseJSON = response.result.value as? [NSDictionary], let strongSelf = self {
+                let nodes = Node.createNodesArray(fromKeyValuesArray: responseJSON)
+                if strongSelf.bubblesView.nodeModels == nil || strongSelf.bubblesView.nodeModels?.count < nodes.count {
+                    strongSelf.bubblesView.nodeModels = NSSet.init(array: Node.allNodes())
+                    strongSelf.AIV.stopAnimating()
                 }
             }
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
-        self.navigationController?.navigationBar.hidden = true
-        self.view.addSubview(dismissBtn)
-    }
-
-    private func loadData()  {
-        Alamofire.request(.GET, mainURLStr + "/api/nodes/all.json").responseJSON { (response) in
-            guard response.result.isSuccess else {
-                print("Error 获取节点数据失败: \(response.result.error)")
-                return
-            }
-            if let responseJSON = response.result.value as? [NSDictionary]{
-                let nodes = Node.createNodesArray(fromKeyValuesArray: responseJSON)
-                (self.view as! RLBubblesView).nodeModels = NSSet.init(array: nodes)
-            }
-        }
-    }
+    
     @objc private func dismiss() {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -68,14 +96,14 @@ extension RLNodeBubbles {
 //MARK: -BubblesViewDelegate
 extension RLNodeBubbles {
     func didStopSlipAnimation() {
-        UIView.animateWithDuration(0.2) {
-            self.dismissBtn.alpha = 1
+        UIView.animateWithDuration(0.5) {
+            self.dismissBtn.alpha = 0.7
         }
     }
     
     func willStartSlipAnimation() {
         UIView.animateWithDuration(0.5) { 
-            self.dismissBtn.alpha = 0
+            self.dismissBtn.alpha = 0.1
         }
     }
 }

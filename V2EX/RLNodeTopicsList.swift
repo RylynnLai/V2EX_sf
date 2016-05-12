@@ -20,11 +20,11 @@ class RLNodeTopicsList: UITableViewController {
         return RLNodesHeadView.instantiateFromNib() as! RLNodesHeadView
     }()
     
-    
-    
     //MARK: -生命周期
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.hidden = false
+        
         //MJRefresh
         header.setRefreshingTarget(self, refreshingAction: #selector(RLNodeTopicsList.refreshData))
         self.tableView.mj_header = header

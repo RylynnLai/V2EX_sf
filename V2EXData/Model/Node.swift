@@ -41,4 +41,9 @@ class Node: NSManagedObject {
         }
         return .None
     }
+    
+    class func allNodes() -> [Node] {
+        let nodes = RLDataManager.sharedManager.objectArrayByPredicate("Node", predicate: nil) as! [Node]
+        return nodes
+    }
 }

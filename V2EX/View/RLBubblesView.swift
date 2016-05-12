@@ -91,12 +91,16 @@ class RLBubblesView: UIScrollView, UIScrollViewDelegate {
     // 声明一个闭包（空），由外部定义，本类调用
     var nodeBtnAction:(nodeModel:Node) -> Void = {_ in }
     // MARK: -init
-    required init?(coder aDecoder: NSCoder) {
+    override init(frame: CGRect) {
         bigSize = CGSizeMake(60, 60)
         smallSize = CGSizeMake(30, 30)
-        super.init(coder: aDecoder)
+        super.init(frame: frame)
         backgroundColor = UIColor.blackColor()
         delegate = self
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
    
     override func awakeFromNib() {

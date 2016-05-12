@@ -41,14 +41,16 @@ extension RLDataManager {
         saveContext()
     }
     //根据查询条件查询数据库
-    func objectArrayByPredicate(entityName:String, predicate: NSPredicate) -> [AnyObject] {
+    func objectArrayByPredicate(entityName:String, predicate: NSPredicate?) -> [AnyObject] {
         var items = [AnyObject]()
         
         //创建一个查询获取请求
         let fetchRequest:NSFetchRequest = NSFetchRequest(entityName: entityName)
         
         //设置查询条件
-        fetchRequest.predicate = predicate
+        if predicate != nil {
+            fetchRequest.predicate = predicate
+        }
         
         //查询操作
         guard let results = try? managedObjectContext.executeFetchRequest(fetchRequest) else { return items }
