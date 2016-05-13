@@ -6,7 +6,7 @@
 //  Copyright © 2016年 ucs. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import Alamofire
 
 
@@ -29,6 +29,21 @@ class RLTopicsHelper: NSObject {
             if let responseJSON = response.result.value as? [AnyObject]{
                 let topic = Topic.createTopic(fromKeyValues: responseJSON.first!)
                 completion(topic: topic)
+            }
+        }
+    }
+    func nodeTopicsWithNodeID(ID:NSNumber, completion:(topics:[Topic]?) -> Void) {
+        let path = "/api/topics/show.json?node_id=\(ID)"
+        
+        Alamofire.request(.GET, mainURLStr + path).responseJSON { (response) in
+            guard response.result.isSuccess else {
+                print("Error 获取节点话题失败: \(response.result.error)")
+                completion(topics: .None)
+                return
+            }
+            if let responseJSON = response.result.value as? [AnyObject]{
+                let topics = Topic.createTopicsArray(fromKeyValuesArray: responseJSON)
+                completion(topics: topics)
             }
         }
     }
@@ -71,15 +86,24 @@ class RLTopicsHelper: NSObject {
         }
     }
     //根据话题ID获得评论
-    func topicRepliesWithTopicID(ID:String, completion:(replies:NSArray) -> Void) {
+    func repliesWithTopicID(ID:String, completion:(replies:NSArray) -> Void) {
         let path = "/api/replies/show.json?topic_id=\(ID)"
         Alamofire.request(.GET, mainURLStr + path).responseJSON { (response) in
+            guard response.result.isSuccess else {
+                print("Error 获取评论列表失败: \(response.result.error)")
+                return
+            }
             
+            if let responseJSON = response.result.value as? [AnyObject] {
+                let replies = Reply.createRepliesArray(fromKeyValuesArray: responseJSON)
+                completion(replies: replies)
+            }
         }
         
     }
+}
 
-    //MARK: -other
+extension RLTopicsHelper {
     //解析HTML,返回话题字典
     func parserHTMLString(str:NSString) -> [NSDictionary] {
         var range:NSRange

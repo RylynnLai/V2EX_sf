@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 
 class RLNodeTopicsList: UITableViewController {
     var nodeModel:Node?
@@ -45,21 +44,14 @@ class RLNodeTopicsList: UITableViewController {
     //下拉刷新
     @objc private func refreshData() {
         if nodeModel != nil {
-            let path = mainURLStr + "/api/topics/show.json?node_id=\(nodeModel!.id!)"
-            Alamofire.request(.GET, path).responseJSON(completionHandler: { [weak self] (response) in
-                guard response.result.isSuccess else {
-                    print("Error 获取节点话题数据失败: \(response.result.error)")
-                    self!.tableView.mj_header.endRefreshing()
-                    return
-                }
-                if let responseJSON = response.result.value as? [AnyObject] {
-                    if let strongSelf = self {
-                        strongSelf.topics = Topic.createTopicsArray(fromKeyValuesArray: responseJSON)
-                        strongSelf.tableView.mj_header.endRefreshing()
-                        strongSelf.tableView.reloadData()
-                    }
+            RLTopicsHelper.shareTopicsHelper.nodeTopicsWithNodeID(nodeModel!.id!, completion: { [weak self] (topics) in
+                if let strongSelf = self, let topicModels = topics {
+                    strongSelf.topics = topicModels
+                    strongSelf.tableView.mj_header.endRefreshing()
+                    strongSelf.tableView.reloadData()
                 }
             })
+            
         }
     }
     //上拉加载更多
@@ -75,20 +67,14 @@ class RLNodeTopicsList: UITableViewController {
             self.title = nodeModel!.title
             self.headView.nodeModel = nodeModel
             //获取完整的节点数据
-            let path = mainURLStr + "/api/nodes/show.json?id=\(nodeModel!.id!)"
-            Alamofire.request(.GET, path).responseJSON { [weak self] (response) in
-                guard response.result.isSuccess else {
-                    print("Error 获取节点数据失败: \(response.result.error)")
-                    return
+
+            RLNodesHelper.shareNodesHelper.nodeWithNodeID(nodeModel!.id!, completion: { [weak self] (node) in
+                if let strongSelf = self {
+                    strongSelf.nodeModel = node
+                    strongSelf.headView.nodeModel = strongSelf.nodeModel
+                    strongSelf.tableView.mj_header.beginRefreshing()
                 }
-                if let responseJSON = response.result.value {
-                    if let strongSelf = self {
-                        strongSelf.nodeModel = Node.createNode(fromKeyValues: responseJSON)
-                        strongSelf.headView.nodeModel = strongSelf.nodeModel
-                        strongSelf.tableView.mj_header.beginRefreshing()
-                    }
-                }
-            }
+            })
         }
     }
 }

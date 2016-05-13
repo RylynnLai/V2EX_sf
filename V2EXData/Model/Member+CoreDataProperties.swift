@@ -2,7 +2,7 @@
 //  Member+CoreDataProperties.swift
 //  
 //
-//  Created by LLZ on 16/5/10.
+//  Created by LLZ on 16/5/13.
 //
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -21,5 +21,6 @@ extension Member {
     @NSManaged var tagline: String?
     @NSManaged var username: String?
     @NSManaged var topic: NSSet?
+    @NSManaged var reply: NSSet?
 
 }

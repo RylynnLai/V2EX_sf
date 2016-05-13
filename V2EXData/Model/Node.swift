@@ -31,7 +31,7 @@ class Node: NSManagedObject {
         return .None
     }
     //MARK: -查
-    //获取指定ID的用户
+    //获取指定ID的节点数据
     class func NodeByName(name: String?) -> Node? {
         if let value = name {
             let predicate = NSPredicate(format: "name == %@", argumentArray:[value])
@@ -41,9 +41,15 @@ class Node: NSManagedObject {
         }
         return .None
     }
-    
+    //获取所有节点数据
     class func allNodes() -> [Node] {
         let nodes = RLDataManager.sharedManager.objectArrayByPredicate("Node", predicate: nil) as! [Node]
+        return nodes
+    }
+    //热门节点
+    class func popularNode() -> [Node] {
+        let predicate = NSPredicate(format: "topics >= 100")
+        let nodes = RLDataManager.sharedManager.objectArrayByPredicate("Node", predicate: predicate) as! [Node]
         return nodes
     }
 }

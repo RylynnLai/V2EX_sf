@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 
 class RLNodeBubbles: UIViewController, BubblesViewDelegate {
 
@@ -34,7 +33,7 @@ class RLNodeBubbles: UIViewController, BubblesViewDelegate {
     }()
     
     private lazy var AIV: UIActivityIndicatorView = {
-        let aviView = UIActivityIndicatorView.init(frame: CGRectMake(0, 0, 30, 30))
+        let aviView = UIActivityIndicatorView.init(frame: CGRectMake(0, 0, 40, 40))
         aviView.center = self.view.center
         return aviView
     }()
@@ -43,37 +42,31 @@ class RLNodeBubbles: UIViewController, BubblesViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadData()
         
         self.view.addSubview(bubblesView)
         self.view.addSubview(dismissBtn)
         self.view.addSubview(AIV)
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         self.navigationController?.navigationBar.hidden = true
+        loadData()
     }
 
     private func loadData()  {
-        AIV.startAnimating()
-        if Node.allNodes().count > 0 {
-            self.bubblesView.nodeModels = NSSet.init(array: Node.allNodes())
+        if Node.popularNode().count > 100 && self.bubblesView.nodeModels?.count <= 0 {
+            AIV.startAnimating()
+            self.bubblesView.nodeModels = NSSet.init(array: Node.popularNode())
             AIV.stopAnimating()
         }
         
-        Alamofire.request(.GET, mainURLStr + "/api/nodes/all.json").responseJSON { [weak self] (response) in
-            guard response.result.isSuccess else {
-                print("Error 获取节点数据失败: \(response.result.error)")
-                return
-            }
-            if let responseJSON = response.result.value as? [NSDictionary], let strongSelf = self {
-                let nodes = Node.createNodesArray(fromKeyValuesArray: responseJSON)
-                if strongSelf.bubblesView.nodeModels == nil || strongSelf.bubblesView.nodeModels?.count < nodes.count {
+        RLNodesHelper.shareNodesHelper.nodesWithCompletion { [weak self] (nodes) in
+            if let strongSelf = self {
+                if strongSelf.bubblesView.nodeModels == nil || strongSelf.bubblesView.nodeModels?.count < Node.popularNode().count {//如果目前显示的bubbles较少，则更新
                     strongSelf.bubblesView.nodeModels = NSSet.init(array: Node.allNodes())
-                    strongSelf.AIV.stopAnimating()
                 }
+                strongSelf.AIV.stopAnimating()
             }
         }
     }

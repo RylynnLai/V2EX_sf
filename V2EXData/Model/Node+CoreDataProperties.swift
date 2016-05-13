@@ -2,7 +2,7 @@
 //  Node+CoreDataProperties.swift
 //  
 //
-//  Created by LLZ on 16/5/10.
+//  Created by LLZ on 16/5/13.
 //
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -17,16 +17,16 @@ extension Node {
     @NSManaged var avatar_large: String?
     @NSManaged var avatar_mini: String?
     @NSManaged var avatar_normal: String?
-    @NSManaged var created: String?
+    @NSManaged var created: NSNumber?
     @NSManaged var footer: String?
     @NSManaged var header: String?
     @NSManaged var id: NSNumber?
     @NSManaged var name: String?
-    @NSManaged var stars: String?
+    @NSManaged var stars: NSNumber?
     @NSManaged var tagline: String?
     @NSManaged var title: String?
     @NSManaged var title_alternative: String?
-    @NSManaged var topics: String?
+    @NSManaged var topics: NSNumber?
     @NSManaged var url: String?
     @NSManaged var username: String?
     @NSManaged var topic: NSSet?

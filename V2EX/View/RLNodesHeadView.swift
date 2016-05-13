@@ -24,9 +24,9 @@ class RLNodesHeadView: UIView {
             //标题
             _titleLable.text = nodeModel!.title;
             //icon 
-            _iconImgV.sd_setImageWithURL(NSURL(string: "https:\(nodeModel!.avatar_normal ?? "")"), placeholderImage: UIImage.init(named: "blank"))
+            _iconImgV.sd_setImageWithURL(NSURL(string: "https:\(nodeModel!.avatar_normal ?? "")"), placeholderImage: UIImage.init(named: "icon_rayps_64@2x"))
             //话题数
-            _topicsNumLable.text = nodeModel?.topics
+            _topicsNumLable.text = nodeModel?.topics?.stringValue
             //星
             if nodeModel!.stars != nil {
                 _startsNumLable.text = "★\(nodeModel!.stars!)"
