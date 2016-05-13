@@ -23,6 +23,7 @@ class RLNodeTopicsList: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.hidden = false
+        self.tableView.separatorStyle = .None;
         
         //MJRefresh
         header.setRefreshingTarget(self, refreshingAction: #selector(RLNodeTopicsList.refreshData))

@@ -12,7 +12,7 @@ extension RLNodeTopicsList {
 
     //MARK: -Table view data source
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return topics.count
+        return topics.count ?? 0//假如不存在则返回0
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell:RLNodeTopicCell? = tableView.dequeueReusableCellWithIdentifier("nodeTopicCell") as? RLNodeTopicCell

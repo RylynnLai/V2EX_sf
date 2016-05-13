@@ -8,8 +8,24 @@
 
 import UIKit
 
-class RLTopicContent: UIViewController, UITableViewDelegate {
+class RLTopicContent: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    var tempCell:RLReplyCell? = nil
     var topicModel:Topic?
+    lazy var replyModels:[Reply] = [Reply]()
+    lazy var replyList:UITableView = {
+        let list = UITableView()
+        list.dataSource = self
+        list.delegate = self
+        return list
+    }()
+    private lazy var footer:MJRefreshAutoNormalFooter = {
+        let refleshFooter = MJRefreshAutoNormalFooter.init(refreshingTarget: self, refreshingAction: #selector(RLTopicContent.loadRepliesData))
+        refleshFooter.refreshingTitleHidden = true
+        refleshFooter.stateLabel.textColor = UIColor.lightGrayColor()
+        refleshFooter.stateLabel.alpha = 0.4
+        refleshFooter.setTitle("点击或上拉显示评论列表", forState: .Idle)
+        return refleshFooter
+    }()
     
     @IBOutlet weak var loadingAIV: UIActivityIndicatorView!
     @IBOutlet weak var authorLable: UILabel!
@@ -23,6 +39,8 @@ class RLTopicContent: UIViewController, UITableViewDelegate {
         super.viewDidLoad()
         initUI()
         initData()
+        
+        self.replyList.estimatedRowHeight = 200;
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -79,13 +97,21 @@ class RLTopicContent: UIViewController, UITableViewDelegate {
         }
     }
     
-    private func loadRepliesData() {
-        
+    @objc private func loadRepliesData() {
+        if let topic = topicModel {
+            RLTopicsHelper.shareTopicsHelper.repliesWithTopicID(topic.id!, completion: { [weak self] (replies) in
+                if let strongSelf = self {
+                    strongSelf.replyModels = replies
+                    strongSelf.replyList.mj_h = 500
+                    let scrollView = strongSelf.view as! UIScrollView
+                    scrollView.contentSize = CGSizeMake(screenW, strongSelf.contentWbV.mj_h + 64 + 500)
+                    strongSelf.replyList.reloadData()
+                    strongSelf.footer.endRefreshing()
+                }
+            })
+        }
     }
     
-    private func addRepliesList()  {
-        
-    }
     //MARK: - UIWebViewDelegate
     func webViewDidStartLoad(webView: UIWebView) {
         loadingAIV.startAnimating()
@@ -95,33 +121,20 @@ class RLTopicContent: UIViewController, UITableViewDelegate {
             return
         } else {
             loadingAIV.stopAnimating()
-            webView.mj_h = webView.scrollView.contentSize.height + 64
+            //根据内容改变webView的高度(有些奇怪，约束不起作用了)，webView不可以滑动
+            webView.mj_h = webView.scrollView.contentSize.height
             webView.scrollView.scrollEnabled = false
+            //本控制器的scrollView可以滑动，改变contentSize
             let scrollView = self.view as! UIScrollView
-            scrollView.contentSize = CGSizeMake(screenW, webView.mj_h + 100)
-            //MJRefresh(加载评论)
-            let footer = MJRefreshAutoNormalFooter.init(refreshingTarget: self, refreshingAction: Selector(loadRepliesData()))
-            footer.refreshingTitleHidden = true
-            footer.stateLabel.textColor = UIColor.lightGrayColor()
-            footer.stateLabel.alpha = 0.4
-            footer.setTitle("点击或上拉显示评论列表", forState: .Idle)
+            scrollView.contentSize = CGSizeMake(screenW, webView.mj_h + 64 + 20)//加上导航栏高度+评论列表初始高度
+            
+            replyList.frame = CGRectMake(0, webView.frame.maxY, screenW, 20)
+            replyList.backgroundColor = UIColor.orangeColor()
+            scrollView.addSubview(replyList)
+            
+            //MJRefresh(加载评论,第一次添加footer默认会拉一次数据)
             scrollView.mj_footer = footer
         }
     }
-    //MARK: - UIScrollViewDelegate
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        //splitViewController下面有两个NavigationController(master,detail)
-        if let nav = self.splitViewController?.viewControllers.last as? UINavigationController {
-            let navBar = nav.navigationBar
-            if scrollView.contentOffset.y > 0 && (navBar.mj_y == 20) {
-                UIView.animateWithDuration(0.5, animations: {
-                    navBar.mj_y = -navBar.mj_h
-                })
-            } else if scrollView.contentOffset.y < 0 && (navBar.mj_y < 0) {
-                UIView.animateWithDuration(0.2, animations: {
-                    navBar.mj_y = 20.0
-                })
-            }
-        }
-    }
+  
 }

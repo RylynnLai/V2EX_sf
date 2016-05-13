@@ -86,7 +86,7 @@ class RLTopicsHelper: NSObject {
         }
     }
     //根据话题ID获得评论
-    func repliesWithTopicID(ID:String, completion:(replies:NSArray) -> Void) {
+    func repliesWithTopicID(ID:NSNumber, completion:(replies:[Reply]) -> Void) {
         let path = "/api/replies/show.json?topic_id=\(ID)"
         Alamofire.request(.GET, mainURLStr + path).responseJSON { (response) in
             guard response.result.isSuccess else {
