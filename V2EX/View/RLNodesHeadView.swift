@@ -38,7 +38,6 @@ class RLNodesHeadView: UIView {
     }
     override func layoutSubviews() {
         //更新高度
-        let height = _descriptionLable.mj_y + _descriptionLable.mj_h + 10
-        self.mj_h = height
+        self.mj_h = _descriptionLable.frame.maxY + 10
     }
 }

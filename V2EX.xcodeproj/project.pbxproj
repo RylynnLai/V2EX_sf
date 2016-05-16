@@ -241,9 +241,9 @@
 				0EAB4B061CE06CCD00AF202A /* RLBubblesView.swift */,
 				0EAB4B071CE06CCD00AF202A /* RLNodeBtn.swift */,
 				0E5C37221CCF460A0074C4C6 /* RLTopicCell.swift */,
+				0E8F29541CE5C4E700591BC3 /* RLReplyCell.swift */,
 				0E7973E31CE467AA0046DFA6 /* RLNodeTopicCell.swift */,
 				0E5C37231CCF460A0074C4C6 /* Xib */,
-				0E8F29541CE5C4E700591BC3 /* RLReplyCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

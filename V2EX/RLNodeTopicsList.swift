@@ -11,8 +11,20 @@ import UIKit
 class RLNodeTopicsList: UITableViewController {
     var nodeModel:Node?
     // 顶部刷新
-    let header = MJRefreshNormalHeader()
-    let footer = MJRefreshBackNormalFooter()
+    
+    private lazy var header:MJRefreshNormalHeader = {
+        let refleshHeader = MJRefreshNormalHeader()
+        refleshHeader.setRefreshingTarget(self, refreshingAction: #selector(RLNodeTopicsList.refreshData))
+        return refleshHeader
+    }()
+    private lazy var footer:MJRefreshBackNormalFooter = {
+        let refleshFooter = MJRefreshBackNormalFooter()
+        refleshFooter.setRefreshingTarget(self, refreshingAction: #selector(RLNodeTopicsList.loadMore))
+        refleshFooter.setTitle("再拉也没用,Livid只给了我10条数据", forState: .Refreshing)
+        refleshFooter.setTitle("", forState: .Idle)
+        return refleshFooter
+    }()
+    
     //懒加载
     lazy var topics = {return [Topic]()}()
     lazy var headView:RLNodesHeadView = {
@@ -26,19 +38,17 @@ class RLNodeTopicsList: UITableViewController {
         self.tableView.separatorStyle = .None;
         
         //MJRefresh
-        header.setRefreshingTarget(self, refreshingAction: #selector(RLNodeTopicsList.refreshData))
         self.tableView.mj_header = header
-        footer.setRefreshingTarget(self, refreshingAction: #selector(RLNodeTopicsList.loadMore))
-        footer.setTitle("再拉也没用,Livid只给了我10条数据", forState: .Refreshing)
         self.tableView.mj_footer = footer
         
-        loadData()
+        loadNodeData()
     }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        //只能放在这,配合table的头视图代理方法,自适应高度
+        //只能放在这,透视图拿到nodemodel数据后就能确定高度,自适应高度
         self.tableView.tableHeaderView = self.headView
+        
     }
   
     //MARK: -加载数据
@@ -63,12 +73,12 @@ class RLNodeTopicsList: UITableViewController {
             }
         }
     }
-    private func loadData() {
+    //获取完整的节点数据
+    private func loadNodeData() {
         if nodeModel != nil {
             self.title = nodeModel!.title
             self.headView.nodeModel = nodeModel
-            //获取完整的节点数据
-
+            
             RLNodesHelper.shareNodesHelper.nodeWithNodeID(nodeModel!.id!, completion: { [weak self] (node) in
                 if let strongSelf = self {
                     strongSelf.nodeModel = node

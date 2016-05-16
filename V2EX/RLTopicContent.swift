@@ -9,11 +9,13 @@
 import UIKit
 
 class RLTopicContent: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    var replyListHeight:CGFloat = 0.0
     var tempCell:RLReplyCell? = nil
     var topicModel:Topic?
     lazy var replyModels:[Reply] = [Reply]()
     lazy var replyList:UITableView = {
         let list = UITableView()
+        list.scrollEnabled = false
         list.dataSource = self
         list.delegate = self
         return list
@@ -26,6 +28,7 @@ class RLTopicContent: UIViewController, UITableViewDelegate, UITableViewDataSour
         refleshFooter.setTitle("点击或上拉显示评论列表", forState: .Idle)
         return refleshFooter
     }()
+    
     
     @IBOutlet weak var loadingAIV: UIActivityIndicatorView!
     @IBOutlet weak var authorLable: UILabel!
@@ -40,7 +43,7 @@ class RLTopicContent: UIViewController, UITableViewDelegate, UITableViewDataSour
         initUI()
         initData()
         
-        self.replyList.estimatedRowHeight = 200;
+        self.replyList.estimatedRowHeight = 100;
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -105,6 +108,7 @@ class RLTopicContent: UIViewController, UITableViewDelegate, UITableViewDataSour
                     strongSelf.replyList.mj_h = 500
                     let scrollView = strongSelf.view as! UIScrollView
                     scrollView.contentSize = CGSizeMake(screenW, strongSelf.contentWbV.mj_h + 64 + 500)
+                    
                     strongSelf.replyList.reloadData()
                     strongSelf.footer.endRefreshing()
                 }

@@ -22,8 +22,8 @@ class RLNodesHelper: NSObject {
                 completion(node: .None)
                 return
             }
-            if let responseJSON = response.result.value as? [AnyObject]{
-                let node = Node.createNode(fromKeyValues: responseJSON.first!)
+            if let responseJSON = response.result.value as? NSDictionary {
+                let node = Node.createNode(fromKeyValues: responseJSON)
                 completion(node: node)
             }
         }

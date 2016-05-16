@@ -20,11 +20,7 @@ class RLReplyCell: UITableViewCell {
         }
     }
     
-    var height:CGFloat {
-        get{
-            return contentLable.frame.maxY
-        }
-    }
+    
     
     @IBOutlet weak var floorNum: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
@@ -47,4 +43,8 @@ class RLReplyCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func cellHeight() -> CGFloat {
+        layoutIfNeeded()
+        return contentLable.frame.maxY
+    }
 }

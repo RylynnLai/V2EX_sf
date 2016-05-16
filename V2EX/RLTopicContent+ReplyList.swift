@@ -30,10 +30,14 @@ extension RLTopicContent {
         // 创建一个临时的cell(目的:传递模型数据,计算cell所有子控件的frame,进而计算cell的高度)
         if tempCell == nil {
             tempCell = tableView.dequeueReusableCellWithIdentifier("replyCell") as? RLReplyCell
+            if tempCell == nil {
+                tempCell = (RLReplyCell.instantiateFromNib() as! RLReplyCell)
+            }
         }
         tempCell?.replyModel = replyModels[indexPath.row]
-        
-        return tempCell?.height ?? 0;
+        let height = tempCell?.cellHeight() ?? 0
+        replyListHeight += height
+        return height
     }
     
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
