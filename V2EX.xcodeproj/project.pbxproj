@@ -71,6 +71,7 @@
 		0E05E4771CD0BF0600317543 /* V2EX-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "V2EX-Bridging-Header.h"; sourceTree = "<group>"; };
 		0E05E4781CD0BF3C00317543 /* RLDefine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLDefine.swift; sourceTree = "<group>"; };
 		0E1C614F1CD32CAF0049E41C /* RLTopicContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLTopicContent.swift; sourceTree = "<group>"; };
+		0E33AF111CE9A40500FA6C91 /* V2EX 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "V2EX 3.xcdatamodel"; sourceTree = "<group>"; };
 		0E51697C1CD210810078B45E /* NSString+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+Extension.swift"; sourceTree = "<group>"; };
 		0E51697D1CD210810078B45E /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		0E57D0BC1CD84B47002C3DE6 /* V2EX.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = V2EX.xcdatamodel; sourceTree = "<group>"; };
@@ -777,10 +778,11 @@
 		0E57D0BB1CD84B47002C3DE6 /* V2EX.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				0E33AF111CE9A40500FA6C91 /* V2EX 3.xcdatamodel */,
 				0E57D0C81CD84C4A002C3DE6 /* V2EX 2.xcdatamodel */,
 				0E57D0BC1CD84B47002C3DE6 /* V2EX.xcdatamodel */,
 			);
-			currentVersion = 0E57D0C81CD84C4A002C3DE6 /* V2EX 2.xcdatamodel */;
+			currentVersion = 0E33AF111CE9A40500FA6C91 /* V2EX 3.xcdatamodel */;
 			path = V2EX.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

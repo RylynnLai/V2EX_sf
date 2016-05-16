@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -61,9 +61,12 @@
                     </variation>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="325" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0Q-kc-sag">
-                    <rect key="frame" x="341" y="10" width="24" height="21"/>
+                    <rect key="frame" x="335" y="10" width="30" height="21"/>
+                    <color key="backgroundColor" red="0.83137254900000002" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="8w3-vE-xUI"/>
+                        <constraint firstAttribute="width" constant="30" id="Cjh-Sp-Ikk"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="21" id="Zq3-LR-Rxc"/>
                         <constraint firstAttribute="height" constant="21" id="m0U-Mn-sUX"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -72,6 +75,7 @@
                     <variation key="default">
                         <mask key="constraints">
                             <exclude reference="8w3-vE-xUI"/>
+                            <exclude reference="Zq3-LR-Rxc"/>
                         </mask>
                     </variation>
                 </label>

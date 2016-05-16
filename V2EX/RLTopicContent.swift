@@ -15,7 +15,7 @@ class RLTopicContent: UIViewController, UITableViewDelegate, UITableViewDataSour
     lazy var replyModels:[Reply] = [Reply]()
     lazy var replyList:UITableView = {
         let list = UITableView()
-        list.scrollEnabled = false
+        list.bounces = false
         list.dataSource = self
         list.delegate = self
         return list
@@ -105,9 +105,10 @@ class RLTopicContent: UIViewController, UITableViewDelegate, UITableViewDataSour
             RLTopicsHelper.shareTopicsHelper.repliesWithTopicID(topic.id!, completion: { [weak self] (replies) in
                 if let strongSelf = self {
                     strongSelf.replyModels = replies
-                    strongSelf.replyList.mj_h = 500
+                    strongSelf.replyList.mj_h = screenH
                     let scrollView = strongSelf.view as! UIScrollView
-                    scrollView.contentSize = CGSizeMake(screenW, strongSelf.contentWbV.mj_h + 64 + 500)
+                    scrollView.contentSize = CGSizeMake(screenW, strongSelf.contentWbV.mj_h + 64 + screenH)
+                    scrollView.setContentOffset(CGPointMake(0, strongSelf.contentWbV.mj_h + 64), animated: true)
                     
                     strongSelf.replyList.reloadData()
                     strongSelf.footer.endRefreshing()
@@ -133,7 +134,7 @@ class RLTopicContent: UIViewController, UITableViewDelegate, UITableViewDataSour
             scrollView.contentSize = CGSizeMake(screenW, webView.mj_h + 64 + 20)//加上导航栏高度+评论列表初始高度
             
             replyList.frame = CGRectMake(0, webView.frame.maxY, screenW, 20)
-            replyList.backgroundColor = UIColor.orangeColor()
+            
             scrollView.addSubview(replyList)
             
             //MJRefresh(加载评论,第一次添加footer默认会拉一次数据)
