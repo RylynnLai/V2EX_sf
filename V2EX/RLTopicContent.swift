@@ -16,6 +16,7 @@ class RLTopicContent: UIViewController, UITableViewDelegate, UITableViewDataSour
     lazy var replyList:UITableView = {
         let list = UITableView()
         list.bounces = false
+        list.alpha = 0.0
         list.dataSource = self
         list.delegate = self
         return list
@@ -105,12 +106,18 @@ class RLTopicContent: UIViewController, UITableViewDelegate, UITableViewDataSour
             RLTopicsHelper.shareTopicsHelper.repliesWithTopicID(topic.id!, completion: { [weak self] (replies) in
                 if let strongSelf = self {
                     strongSelf.replyModels = replies
-                    strongSelf.replyList.mj_h = screenH
-                    let scrollView = strongSelf.view as! UIScrollView
-                    scrollView.contentSize = CGSizeMake(screenW, strongSelf.contentWbV.mj_h + 64 + screenH)
-                    scrollView.setContentOffset(CGPointMake(0, strongSelf.contentWbV.mj_h + 64), animated: true)
-                    
-                    strongSelf.replyList.reloadData()
+                    if replies.count > 0{
+                        strongSelf.replyList.alpha = 1.0
+                        strongSelf.replyList.mj_h = screenH - 20
+                        let scrollView = strongSelf.view as! UIScrollView
+                        scrollView.contentSize = CGSizeMake(screenW, strongSelf.contentWbV.mj_h + 64 + screenH)
+                        scrollView.setContentOffset(CGPointMake(0, strongSelf.contentWbV.mj_h + 64), animated: true)
+                        
+                        strongSelf.replyList.reloadData()
+                        strongSelf.footer.setTitle("点击或上拉刷新评论列表", forState: .Idle)
+                    } else {
+                        strongSelf.footer.setTitle("目前还没有人发表评论", forState: .Idle)
+                    }
                     strongSelf.footer.endRefreshing()
                 }
             })
@@ -131,7 +138,7 @@ class RLTopicContent: UIViewController, UITableViewDelegate, UITableViewDataSour
             webView.scrollView.scrollEnabled = false
             //本控制器的scrollView可以滑动，改变contentSize
             let scrollView = self.view as! UIScrollView
-            scrollView.contentSize = CGSizeMake(screenW, webView.mj_h + 64 + 20)//加上导航栏高度+评论列表初始高度
+            scrollView.contentSize = CGSizeMake(screenW, webView.mj_h + 64)//加上导航栏高度+评论列表初始高度
             
             replyList.frame = CGRectMake(0, webView.frame.maxY, screenW, 20)
             

@@ -15,6 +15,7 @@ class RLReplyCell: UITableViewCell {
             nameLabel.text = replyModel?.member?.username
             floorNum.text = replyModel?.floor?.stringValue
             createdTime.text = String.creatTimeByTimeIntervalSince1970(Double(replyModel!.created!))
+            thanksLable.text = "Thks \(replyModel!.thanks!.stringValue)"
             contentLable.text = replyModel?.content
             let iconURL = NSURL.init(string: "http:\(replyModel!.member!.avatar_normal ?? "")")
             authorBtn.sd_setBackgroundImageWithURL(iconURL, forState: .Normal, placeholderImage: UIImage.init(named: "blank"))
@@ -31,6 +32,7 @@ class RLReplyCell: UITableViewCell {
     @IBOutlet weak var contentLable: UILabel!
     @IBOutlet weak var createdTime: UILabel!
     @IBOutlet weak var authorBtn: UIButton!
+    @IBOutlet weak var thanksLable: UILabel!
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
