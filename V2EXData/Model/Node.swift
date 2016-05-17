@@ -48,7 +48,7 @@ class Node: NSManagedObject {
     }
     //热门节点
     class func popularNode() -> [Node] {
-        let predicate = NSPredicate(format: "topics >= 100")
+        let predicate = NSPredicate(format: "topics >= 150")
         let nodes = RLDataManager.sharedManager.objectArrayByPredicate("Node", predicate: predicate) as! [Node]
         return nodes
     }

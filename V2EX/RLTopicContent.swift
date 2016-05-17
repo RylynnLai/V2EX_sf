@@ -106,7 +106,7 @@ class RLTopicContent: UIViewController, UITableViewDelegate, UITableViewDataSour
             RLTopicsHelper.shareTopicsHelper.repliesWithTopicID(topic.id!, completion: { [weak self] (replies) in
                 if let strongSelf = self {
                     strongSelf.replyModels = replies
-                    if replies.count > 0{
+                    if replies.count > 0 {
                         strongSelf.replyList.alpha = 1.0
                         strongSelf.replyList.mj_h = screenH - 20
                         let scrollView = strongSelf.view as! UIScrollView

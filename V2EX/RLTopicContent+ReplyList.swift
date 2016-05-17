@@ -48,6 +48,7 @@ extension RLTopicContent {
 
     //MARK: - UIScrollViewDelegate
     func scrollViewDidScroll(scrollView: UIScrollView) {
+        
         //splitViewController下面有两个NavigationController(master,detail)
         if let nav = self.splitViewController?.viewControllers.last as? UINavigationController {
             if scrollView == self.view {
@@ -62,13 +63,14 @@ extension RLTopicContent {
                     })
                 }
                 if scrollView.contentOffset.y <= contentWbV.mj_h {
+                    
                     replyList.scrollEnabled = false
                 } else {
+                    
                     replyList.scrollEnabled = true
                 }
             }
         }
-        
     }
 }
 

@@ -94,7 +94,7 @@ class RLNodeTopicsList: UITableViewController {
 extension RLNodeTopicsList {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "NodeTopicList2TopicContent" {
-            if let topicContent = segue.destinationViewController as? RLTopicContent {
+            if let topicContent = (segue.destinationViewController as? UINavigationController)?.topViewController as? RLTopicContent {
                 topicContent.topicModel = sender as? Topic
             }
         }

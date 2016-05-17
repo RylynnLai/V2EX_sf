@@ -8,22 +8,22 @@
 
 import UIKit
 
-class RLNodeBubbles: UIViewController, BubblesViewDelegate {
+class RLNodeBubbles: UIViewController {
 
-    lazy var dismissBtn:UIButton = {
-        let btn = UIButton.init(frame: CGRectMake(20, 20, 40, 40))
-        btn.alpha = 0.5
-        btn.backgroundColor = V2EXGray
-        btn.setTitle("返回", forState: .Normal)
-        btn.layer.cornerRadius = 10
-        btn.layer.masksToBounds = true
-        btn.addTarget(self, action: #selector(RLNodeBubbles.dismiss), forControlEvents: .TouchUpInside)
-        return btn
-    }()
+//    lazy var dismissBtn:UIButton = {
+//        let btn = UIButton.init(frame: CGRectMake(20, 20, 40, 40))
+//        btn.alpha = 0.5
+//        btn.backgroundColor = V2EXGray
+//        btn.setTitle("返回", forState: .Normal)
+//        btn.layer.cornerRadius = 10
+//        btn.layer.masksToBounds = true
+//        btn.addTarget(self, action: #selector(RLNodeBubbles.dismiss), forControlEvents: .TouchUpInside)
+//        return btn
+//    }()
     
     private lazy var bubblesView:RLBubblesView = {
         var bView = RLBubblesView.init(frame: UIScreen.mainScreen().bounds)
-        bView.Bdelegate = self
+//        bView.Bdelegate = self
         bView.nodeBtnAction = {[weak self] (nodeModel) -> Void in
             if let strongSelf = self {
                 strongSelf.performSegueWithIdentifier("NodeBubbles2NodeTopicList", sender: nodeModel)//执行segue线
@@ -44,8 +44,9 @@ class RLNodeBubbles: UIViewController, BubblesViewDelegate {
         super.viewDidLoad()
         
         self.view.addSubview(bubblesView)
-        self.view.addSubview(dismissBtn)
+//        self.view.addSubview(dismissBtn)
         self.view.addSubview(AIV)
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -71,10 +72,10 @@ class RLNodeBubbles: UIViewController, BubblesViewDelegate {
         }
     }
     
-    
-    @objc private func dismiss() {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
+//    
+//    @objc private func dismiss() {
+//        self.dismissViewControllerAnimated(true, completion: nil)
+//    }
 }
 //MARK: -segue
 extension RLNodeBubbles {
@@ -87,16 +88,16 @@ extension RLNodeBubbles {
     }
 }
 //MARK: -BubblesViewDelegate
-extension RLNodeBubbles {
-    func didStopSlipAnimation() {
-        UIView.animateWithDuration(0.5) {
-            self.dismissBtn.alpha = 0.7
-        }
-    }
-    
-    func willStartSlipAnimation() {
-        UIView.animateWithDuration(0.5) { 
-            self.dismissBtn.alpha = 0.1
-        }
-    }
-}
+//extension RLNodeBubbles {
+//    func didStopSlipAnimation() {
+//        UIView.animateWithDuration(0.5) {
+//            self.dismissBtn.alpha = 0.7
+//        }
+//    }
+//    
+//    func willStartSlipAnimation() {
+//        UIView.animateWithDuration(0.5) { 
+//            self.dismissBtn.alpha = 0.1
+//        }
+//    }
+//}

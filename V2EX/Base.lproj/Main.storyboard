@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="FRj-iB-uYL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="FRj-iB-uYL">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
     </dependencies>
     <scenes>
         <!--Node Bubbles-->
@@ -46,7 +47,10 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="HnD-bD-SZB" kind="show" identifier="NodeTopicList2TopicContent" id="8qe-ur-Ifq"/>
+                                    <segue destination="oZh-pd-t5q" kind="showDetail" identifier="NodeTopicList2TopicContent" action="showViewController:sender:" id="2ey-oE-IzH">
+                                        <segue key="commit" inheritsFrom="parent" id="uDQ-xC-79U"/>
+                                        <segue key="preview" inheritsFrom="commit" id="DrW-74-GVr"/>
+                                    </segue>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -243,7 +247,10 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="oZh-pd-t5q" kind="show" identifier="TopicList2TopicContent" id="EHj-S1-MZl"/>
+                                    <segue destination="oZh-pd-t5q" kind="showDetail" identifier="TopicList2TopicContent" action="showViewController:sender:" id="EHj-S1-MZl">
+                                        <segue key="commit" inheritsFrom="parent" id="mOh-D6-unH"/>
+                                        <segue key="preview" inheritsFrom="commit" id="Ros-nI-ml6"/>
+                                    </segue>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -255,7 +262,7 @@
                     <navigationItem key="navigationItem" title="Root View Controller" id="VhT-4y-ZHT">
                         <barButtonItem key="rightBarButtonItem" image="icon_rayps_64@2x" style="plain" id="yJc-Fi-mjm">
                             <connections>
-                                <segue destination="pxw-eq-VKQ" kind="modal" id="BIp-i5-MCi"/>
+                                <segue destination="pxw-eq-VKQ" kind="showDetail" id="BIp-i5-MCi"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -348,7 +355,6 @@
         <image name="icon_rayps_64@2x" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="EHj-S1-MZl"/>
-        <segue reference="8qe-ur-Ifq"/>
+        <segue reference="2ey-oE-IzH"/>
     </inferredMetricsTieBreakers>
 </document>
