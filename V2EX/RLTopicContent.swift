@@ -110,7 +110,7 @@ class RLTopicContent: UIViewController, UITableViewDelegate, UITableViewDataSour
                         strongSelf.replyList.alpha = 1.0
                         strongSelf.replyList.mj_h = screenH - 20
                         let scrollView = strongSelf.view as! UIScrollView
-                        scrollView.contentSize = CGSizeMake(screenW, strongSelf.contentWbV.mj_h + 64 + screenH)
+                        scrollView.contentSize = CGSizeMake(strongSelf.contentWbV.frame.maxX, strongSelf.contentWbV.mj_h + 64 + screenH)
                         scrollView.setContentOffset(CGPointMake(0, strongSelf.contentWbV.mj_h + 64), animated: true)
                         
                         strongSelf.replyList.reloadData()
@@ -138,9 +138,9 @@ class RLTopicContent: UIViewController, UITableViewDelegate, UITableViewDataSour
             webView.scrollView.scrollEnabled = false
             //本控制器的scrollView可以滑动，改变contentSize
             let scrollView = self.view as! UIScrollView
-            scrollView.contentSize = CGSizeMake(screenW, webView.mj_h + 64)//加上导航栏高度+评论列表初始高度
+            scrollView.contentSize = CGSizeMake(webView.frame.maxX, webView.mj_h + 64)//加上导航栏高度+评论列表初始高度
             
-            replyList.frame = CGRectMake(0, webView.frame.maxY, screenW, 20)
+            replyList.frame = CGRectMake(0, webView.frame.maxY, webView.frame.maxX, 20)
             
             scrollView.addSubview(replyList)
             

@@ -48,8 +48,8 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <segue destination="oZh-pd-t5q" kind="showDetail" identifier="NodeTopicList2TopicContent" action="showViewController:sender:" id="2ey-oE-IzH">
-                                        <segue key="commit" inheritsFrom="parent" id="uDQ-xC-79U"/>
-                                        <segue key="preview" inheritsFrom="commit" id="DrW-74-GVr"/>
+                                        <segue key="commit" inheritsFrom="parent" id="oYY-Jm-9l3"/>
+                                        <segue key="preview" inheritsFrom="commit" id="SiV-BZ-QV9"/>
                                     </segue>
                                 </connections>
                             </tableViewCell>
@@ -248,8 +248,8 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <segue destination="oZh-pd-t5q" kind="showDetail" identifier="TopicList2TopicContent" action="showViewController:sender:" id="EHj-S1-MZl">
-                                        <segue key="commit" inheritsFrom="parent" id="mOh-D6-unH"/>
-                                        <segue key="preview" inheritsFrom="commit" id="Ros-nI-ml6"/>
+                                        <segue key="commit" inheritsFrom="parent" id="LBK-PH-z9h"/>
+                                        <segue key="preview" inheritsFrom="commit" id="nSB-zQ-hEs"/>
                                     </segue>
                                 </connections>
                             </tableViewCell>
@@ -262,7 +262,7 @@
                     <navigationItem key="navigationItem" title="Root View Controller" id="VhT-4y-ZHT">
                         <barButtonItem key="rightBarButtonItem" image="icon_rayps_64@2x" style="plain" id="yJc-Fi-mjm">
                             <connections>
-                                <segue destination="pxw-eq-VKQ" kind="showDetail" id="BIp-i5-MCi"/>
+                                <segue destination="pxw-eq-VKQ" kind="show" id="BIp-i5-MCi"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -334,6 +334,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pxw-eq-VKQ" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="mSG-zj-QK9"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="200" height="10"/>

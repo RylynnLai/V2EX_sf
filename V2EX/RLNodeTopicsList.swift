@@ -49,7 +49,13 @@ class RLNodeTopicsList: UITableViewController {
         //只能放在这,透视图拿到nodemodel数据后就能确定高度,自适应高度
         self.tableView.tableHeaderView = self.headView
         
+        if let nav = self.splitViewController?.viewControllers.last as? UINavigationController {
+            UIView.animateWithDuration(0.2, animations: {
+                nav.navigationBar.mj_y = 20.0
+            })
+        }
     }
+ 
   
     //MARK: -加载数据
     //下拉刷新
