@@ -41,17 +41,12 @@ extension RLTopicContent {
         replyListHeight += height
         return height
     }
-    
-    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 100
-    }
 
     //MARK: - UIScrollViewDelegate
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        
-        //splitViewController下面有两个NavigationController(master,detail)
-        if let nav = self.splitViewController?.viewControllers.last as? UINavigationController {
-            if scrollView == self.view {
+       if scrollView == self.view {
+            //splitViewController下面有两个NavigationController(master,detail)
+            if let nav = self.splitViewController?.viewControllers.last as? UINavigationController {
                 let navBar = nav.navigationBar
                 if scrollView.contentOffset.y > 0 && (navBar.mj_y == 20) {
                     UIView.animateWithDuration(0.5, animations: {
@@ -61,13 +56,6 @@ extension RLTopicContent {
                     UIView.animateWithDuration(0.2, animations: {
                         navBar.mj_y = 20.0
                     })
-                }
-                if scrollView.contentOffset.y <= contentWbV.mj_h {
-                    
-                    replyList.scrollEnabled = false
-                } else {
-                    
-                    replyList.scrollEnabled = true
                 }
             }
         }
